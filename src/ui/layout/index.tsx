@@ -1,13 +1,13 @@
-import Layout from "@/ui/layout";
+import "@/app/globals.css"
 import NavigationBar from "@/ui/navbar";
-import React from "react";
+import { Metadata } from 'next';
 
-const Page = () => {
+
+const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <>
-      <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen">
       {/* Navigation Bar */}
-      <NavigationBar />
+      {/* <NavigationBar /> */}
 
       {/* Main Content */}
       <div className="flex flex-row flex-1">
@@ -28,8 +28,7 @@ const Page = () => {
         </div>
       </div>
     </div>
-    </>
   );
 };
 
-export default Page;
+export default Layout;
