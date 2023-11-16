@@ -6,6 +6,7 @@ import CurrentYear from "@/lib/date";
 import { NavbarLink } from "@/ui/navbar/navLinks";
 import { MobileNavItem } from "@/ui/navbar/mobileLinks";
 import { navLinks } from "./data";
+import ThemeSwitcher from "@/utils/themeSwitcher";
 
 export default function NavigationBar() {
   const logoText = "Etherial Insights";
@@ -51,16 +52,16 @@ export default function NavigationBar() {
           ))}
         </ul>
         <Link
-          className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200"
+          className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 rounded-md transition duration-200"
           href="#"
         >
-          Sign In
+          <ThemeSwitcher/>
         </Link>
         <Link
-          className="hidden lg:inline-block py-2 px-6 bg-black hover:bg-gray text-sm text-white font-bold rounded-xl transition duration-200"
+          className="hidden lg:inline-block py-2 px-6 bg-black hover:bg-lime-800 text-sm text-white rounded-sm transition duration-200"
           href="#"
         >
-          Sign up
+          Shop
         </Link>
       </nav>
       <div
@@ -98,12 +99,7 @@ export default function NavigationBar() {
           </div>
           <div className="mt-auto">
             <div className="pt-6 animate__animated animate__fadeIn">
-              <Link
-                className="block px-4 py-3 mb-3 text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl"
-                href="#"
-              >
-                Sign in
-              </Link>
+              <ThemeSwitcher />
               <Link
                 className="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-black hover:bg-gray  rounded-xl"
                 href="#"

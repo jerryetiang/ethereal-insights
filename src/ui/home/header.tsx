@@ -33,13 +33,13 @@ export default function Header() {
               <div className="mt-10 flex flex-col items-center md:flex-row">
                 <Link
                   href="/"
-                  className="mb-3 inline-flex h-12 w-full items-center justify-center rounded bg-green-700 px-6 font-medium tracking-wide text-white shadow-md transition hover:bg-black focus:outline-none md:mr-4 md:mb-0 md:w-auto"
+                  className="mb-3 inline-flex h-12 w-full items-center justify-center rounded bg-lime-800 px-6 font-medium tracking-wide text-white shadow-md transition hover:bg-black focus:outline-none md:mr-4 md:mb-0 md:w-auto"
                 >
                   Start Exploring
                 </Link>
                 <Link
                   href="/"
-                  aria-label
+                  aria-label="join"
                   className="group inline-flex items-center font-semibold text-g1"
                 >
                   Join the conversation
