@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
+  darkMode: 'class', // or 'media'
   content: [
     "./node_modules/flowbite-react/**/*.js",
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -21,6 +22,5 @@ const config: Config = {
   plugins: [
     require("flowbite/plugin")
   ],
-  darkMode: 'class', // or 'media'
 }
 export default config

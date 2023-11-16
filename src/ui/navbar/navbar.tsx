@@ -9,7 +9,7 @@ import { navLinks } from "./data";
 import ThemeSwitcher from "@/utils/themeSwitcher";
 
 export default function NavigationBar() {
-  const logoText = "Etherial Insights";
+  const logoText = "Ethereal Insights";
 
   const [isMenuHidden, setIsMenuHidden] = useState(true);
 
@@ -27,13 +27,13 @@ export default function NavigationBar() {
 
   return (
     <div className="">
-      <nav className="relative px-4 py-4 flex justify-between items-center bg-white">
-        <Link className="text-2xl font-bold leading-none" href="#">
+      <nav className="relative px-4 py-4 flex justify-between items-center bg-white text-black dark:bg-black dark:text-white">
+        <Link className="text-2xl font-bold leading-none text-black dark:text-white" href="#">
           <span>{logoText}</span>
         </Link>
         <div className="lg:hidden">
           <button
-            className="navbar-burger flex items-center text-black p-3"
+            className="navbar-burger flex items-center text-black dark:text-white p-3"
             onClick={shownMenu}
           >
             <svg
@@ -67,10 +67,10 @@ export default function NavigationBar() {
       <div
         className={`navbar-menu relative z-50 ${isMenuHidden ? "hidden" : ""}`}
       >
-        <div className="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25" />
-        <nav className="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
-          <div className="flex items-center mb-8">
-            <Link className="mr-auto text-xl font-bold leading-none" href="#">
+        <div className="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25 bg-white dark:bg-black" />
+        <nav className="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white dark:bg-black border-r overflow-y-auto">
+          <div className="flex items-center mb-8 bg-white dark:bg-black ">
+            <Link className="mr-auto text-xl font-bold text-black dark:text-white leading-none" href="#">
               <span>{logoText}</span>
             </Link>
             <button className="navbar-close" onClick={hideMenu}>
