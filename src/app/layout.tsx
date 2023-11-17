@@ -3,7 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import "animate.css";
 import Provider from "@/utils/provider";
-import NavigationBar from "@/ui/navbar/navbar";
+import NavigationBar from "@/ui/components/navbar/navbar";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -22,10 +22,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} bg-white dark:bg-black`}>
+      <body className={`${poppins.className} bg-white dark:bg-black theme-transition`}>
         <Provider>
           <NavigationBar />
-          <main>{children}</main>
+          <main className="container">{children}</main>
         </Provider>
       </body>
     </html>

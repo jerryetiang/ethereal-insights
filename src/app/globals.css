@@ -4,6 +4,12 @@
 
 @layer base{
     body {
-        @apply dark:bg-black bg-white
+        @apply dark:bg-black bg-white;
+        transition: background-color 0.5s, color 0.5s;
+        
     }
 }
+
+.theme-transition {
+    transition: background-color 0.5s, color 0.5s;
+  }

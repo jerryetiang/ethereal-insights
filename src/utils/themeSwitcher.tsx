@@ -1,20 +1,25 @@
-"use client";
-import { useTheme } from "next-themes";
+"use client"
+import React from 'react';
+import { useTheme } from 'next-themes';
 
 const ThemeSwitcher = () => {
   const { systemTheme, theme, setTheme } = useTheme();
 
   const renderThemeChanger = () => {
-    const currentTheme = theme === "system" ? systemTheme : theme;
+    const currentTheme = theme === 'system' ? systemTheme : theme;
 
-    if (currentTheme === "dark") {
-      return (
-        <button
-          className="w-6 h-6 text-emerald-500 "
-          role="button"
-          onClick={() => setTheme("light")}
-          title="Light"
-        >
+    const buttonClass = `w-6 h-6 ${
+      currentTheme === 'dark' ? 'text-yellow-500' : 'text-slate-950'
+    } ${currentTheme === 'dark' ? 'dark-transition' : ''}`;
+
+    return (
+      <button
+        className={buttonClass}
+        role="button"
+        onClick={() => setTheme(currentTheme === 'dark' ? 'light' : 'dark')}
+        title={currentTheme === 'dark' ? 'Light' : 'Dark'}
+      >
+        {currentTheme === 'dark' ? (
           <svg
             fill="currentColor"
             viewBox="0 0 20 20"
@@ -26,16 +31,7 @@ const ThemeSwitcher = () => {
               clipRule="evenodd"
             ></path>
           </svg>
-        </button>
-      );
-    } else {
-      return (
-        <button
-          className="w-6 h-6 text-emerald-500 "
-          role="button"
-          onClick={() => setTheme("dark")}
-          title="Dark"
-        >
+        ) : (
           <svg
             fill="currentColor"
             viewBox="0 0 20 20"
@@ -43,9 +39,9 @@ const ThemeSwitcher = () => {
           >
             <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
           </svg>
-        </button>
-      );
-    }
+        )}
+      </button>
+    );
   };
 
   return <>{renderThemeChanger()}</>;

@@ -1,12 +1,16 @@
-import Header from '@/ui/home/header'
-import Team from '@/ui/team'
+import Header from '@/ui/sections/home/header'
+import Journal from '@/ui/sections/journal/journal'
 import React from 'react'
 
 export default function Page() {
   return (
     <div>
-      <Header />   
-      {/* <Team />    */}
+      <section>
+        <Header /> 
+      </section>
+      <section>
+        <Journal />
+      </section>       
     </div>
   )
 }
