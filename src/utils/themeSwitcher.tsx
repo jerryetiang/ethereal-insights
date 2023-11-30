@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import React from 'react';
 import { useTheme } from 'next-themes';
 
@@ -12,11 +12,18 @@ const ThemeSwitcher = () => {
       currentTheme === 'dark' ? 'text-yellow-500' : 'text-slate-950'
     } ${currentTheme === 'dark' ? 'dark-transition' : ''}`;
 
+    const handleThemeToggle = (e: { preventDefault: () => void; }) => {
+      e.preventDefault(); // Prevent the default behavior (e.g., page reload)
+
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      setTheme(newTheme);
+    };
+
     return (
       <button
         className={buttonClass}
         role="button"
-        onClick={() => setTheme(currentTheme === 'dark' ? 'light' : 'dark')}
+        onClick={handleThemeToggle}
         title={currentTheme === 'dark' ? 'Light' : 'Dark'}
       >
         {currentTheme === 'dark' ? (

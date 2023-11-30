@@ -24,11 +24,15 @@ export default function NavigationBar() {
   const toggleMenu = () => {
     setIsMenuHidden(!isMenuHidden);
   };
+  
 
   return (
-    <div className="">
+    <div className="fixed top-0 w-full z-50">
       <nav className="relative px-4 py-4 flex justify-between items-center bg-white text-black dark:bg-black dark:text-white theme-transition">
-        <Link className="text-2xl font-bold leading-none text-black dark:text-white" href="#">
+        <Link
+          className="text-2xl font-bold leading-none text-black dark:text-white"
+          href="#"
+        >
           <span>{logoText}</span>
         </Link>
         <div className="lg:hidden">
@@ -55,22 +59,29 @@ export default function NavigationBar() {
           className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 rounded-md transition duration-200"
           href="#"
         >
-          <ThemeSwitcher/>
+          <ThemeSwitcher />
         </Link>
         <Link
-                  className="hidden lg:inline-block py-2 px-6  items-center justify-center rounded bg-zinc-950 font-medium tracking-wide text-gray-100 shadow-md transition hover:bg-zinc-900 focus:outline-none md:mr-4 md:mb-0 md:w-auto"
-                  href="#"
+          className="hidden lg:inline-block py-2 px-6  items-center justify-center rounded bg-zinc-950 font-medium tracking-wide text-gray-100 shadow-md transition hover:bg-zinc-900 focus:outline-none md:mr-4 md:mb-0 md:w-auto"
+          href="#"
         >
           Shop
         </Link>
       </nav>
       <div
-        className={`navbar-menu relative z-50 ${isMenuHidden ? "hidden animate__animated animate__fadeOut" : "animate__animated animate__fadeIn"}`}
+        className={`navbar-menu relative z-50 ${
+          isMenuHidden
+            ? "hidden animate__animated animate__fadeOut"
+            : "animate__animated animate__fadeIn"
+        }`}
       >
         <div className="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25" />
         <nav className="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white dark:bg-black border-r overflow-y-auto theme-transition">
           <div className="flex items-center mb-8 bg-white dark:bg-black ">
-            <Link className="mr-auto text-xl font-bold text-black dark:text-white leading-none theme-transition" href="#">
+            <Link
+              className="mr-auto text-xl font-bold text-black dark:text-white leading-none theme-transition"
+              href="#"
+            >
               <span>{logoText}</span>
             </Link>
             <button className="navbar-close" onClick={hideMenu}>
@@ -104,7 +115,7 @@ export default function NavigationBar() {
                 className="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white dark:text-black font-semibold bg-black dark:bg-white hover:bg-gray theme-transition rounded-xl"
                 href="#"
               >
-                Sign Up
+                Shop
               </Link>
             </div>
             <p className="my-4 text-xs text-center text-gray-400">

@@ -7,17 +7,17 @@ export default function Header() {
     <div className="dark:bg-black dark:text-light bg-white relative flex items-center  n justify-center overflow-hidden theme-transition">
       <div className="relative mx-auto h-full px-4  pb-20   md:pb-10 sm:max-w-xl md:max-w-full md:px-24 lg:max-w-screen-xl lg:px-8">
         <div className="flex flex-col items-center justify-between lg:flex-row py-16">
-          <div className=" relative ">
-            <div className=" absolute top-0 -left-48 z-0 ">
+          <div className=" relative mt-4">
+            <div className=" absolute top-0 -left-48">
               <Image
                 src="/palm-tree.png"
-                className="w-36 z-0  h-full object-fill fill-y text-y"
+                className="w-36 h-full object-fill fill-y text-y"
                 alt={"200x100 image"}
                 width={200}
                 height={400}
               />
             </div>
-            <div className="lg:max-w-xl lg:pr-5 relative z-40">
+            <div className="lg:max-w-xl lg:pr-5 relative z-10">
               <p className="flex text-sm uppercase text-g1 ">Explore</p>
               <h2 className="mb-6 max-w-lg text-4xl font-light leading-snug tracking-tight text-g1 sm:text-5xl sm:leading-snug">
                 Thought provoking
@@ -87,10 +87,10 @@ export default function Header() {
           </div>
         </div>
       </div>
-      <div className="hidden text-9xl varien absolute top-6 left-1/4 text-g/10 z-40    ">
+      <div className="hidden text-9xl varien absolute top-6 left-1/4 text-g/10 z-10">
         Explore
       </div>
-      <div className=" absolute -bottom-24 left-10 z-0  opacity-10 ">
+      <div className="absolute -bottom-24 left-10 z-0 opacity-10">
         <svg
           width="800px"
           height="800px"
@@ -106,7 +106,7 @@ export default function Header() {
           />
         </svg>
       </div>
-      <div className=" absolute -bottom-0 left-3/4 z-0  opacity-10 ">
+      <div className="absolute -bottom-0 left-3/4 z-0 opacity-10 ">
         <svg
           width="800px"
           height="800px"
@@ -120,7 +120,7 @@ export default function Header() {
           />
         </svg>
       </div>
-      <div className=" absolute top-10 left-3/4 z-0  opacity-10 ">
+      <div className=" absolute top-10 left-3/4 z-0 opacity-10 ">
         <svg
           fill="#000000"
           width="800px"

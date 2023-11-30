@@ -29,7 +29,7 @@ export const MobileNavItem: React.FC<MobileNavItemProps> = ({ link }) => {
           className={clsx(
             "block p-4 text-sm font-semibold text-gray-400 hover:bg-gray-50 hover:text-gray rounded",
             {
-              "animate__animated animate__fadeIn animate__pulse": !isHovered,
+              "animate__animated animate__pulse": !isHovered,
               "text-black hover:text-gray": isHovered,
             }
           )}

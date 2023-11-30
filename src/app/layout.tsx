@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className={`${poppins.className} bg-white dark:bg-black theme-transition`}>
         <Provider>
           <NavigationBar />
-          <main className="container">{children}</main>
+          <main className="">{children}</main>
         </Provider>
       </body>
     </html>
