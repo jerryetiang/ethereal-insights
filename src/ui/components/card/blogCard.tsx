@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 export default function Card() {
@@ -5,10 +6,12 @@ export default function Card() {
     <div>
       <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-black dark:border-gray-700 theme-transition">
         <a href="#">
-          <img
+          <Image
             className="rounded-t-lg"
             src="/woman-meditating.png"
-            alt
+            alt="woman-meditating"
+            width={400}
+            height={400}
           />
         </a>
         <div className="p-5">
