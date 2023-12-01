@@ -4,15 +4,15 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <div className="dark:bg-black dark:text-light bg-white relative flex items-center  n justify-center overflow-hidden theme-transition">
-      <div className="relative mx-auto h-full px-4  pb-20   md:pb-10 sm:max-w-xl md:max-w-full md:px-24 lg:max-w-screen-xl lg:px-8">
+    <div className="dark:bg-black dark:text-light bg-white relative flex items-center justify-center overflow-hidden theme-transition h-screen mx-auto">
+      <div className="relative mx-auto h-screen px-4 pb-20 md:pb-10 sm:max-w-xl md:max-w-full md:px-24 lg:max-w-screen-xl lg:px-8 flex flex-col items-center justify-center">
         <div className="flex flex-col items-center justify-between lg:flex-row py-16">
           <div className=" relative mt-4">
             <div className=" absolute top-0 -left-48">
               <Image
                 src="/palm-tree.png"
                 className="w-36 h-full object-fill fill-y text-y"
-                alt={"200x100 image"}
+                alt={"palm tree"}
                 width={200}
                 height={400}
               />
@@ -35,7 +35,7 @@ export default function Header() {
                   href="/"
                   className="mb-3 inline-flex h-12 w-full items-center justify-center rounded bg-zinc-950 px-6 font-medium tracking-wide text-gray-100 shadow-md transition hover:bg-zinc-900 focus:outline-none md:mr-4 md:mb-0 md:w-auto"
                 >
-                  Start Exploring
+                  Learn More
                 </Link>
                 <Link
                   href="/"
@@ -60,6 +60,7 @@ export default function Header() {
                 </Link>
               </div>
             </div>
+
           </div>
           <div className="relative hidden lg:ml-4 lg:block lg:w-1/2">
             <svg
@@ -84,6 +85,7 @@ export default function Header() {
                 height={400}
               />
             </div>
+          
           </div>
         </div>
       </div>
