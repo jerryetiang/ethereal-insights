@@ -4,6 +4,7 @@ import "./globals.css";
 import "animate.css";
 import Provider from "@/utils/provider";
 import NavigationBar from "@/ui/components/navbar/navbar";
+import { Analytics } from '@vercel/analytics/react';
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -26,6 +27,7 @@ export default function RootLayout({
         <Provider>
           <NavigationBar />
           <main className="">{children}</main>
+          <Analytics />
         </Provider>
       </body>
     </html>
