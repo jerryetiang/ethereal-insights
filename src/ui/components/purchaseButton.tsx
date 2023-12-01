@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import gsap from "gsap";
 
 const PurchaseModal = () => {
@@ -7,14 +7,14 @@ const PurchaseModal = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const modalRef = useRef(null);
-  const backdropRef = useRef(null);
+  const modalRef = useRef<HTMLDivElement | null>(null);
+  const backdropRef = useRef<HTMLDivElement | null>(null);
 
   const openPurchaseModal = () => {
     setOpenModal(true);
   };
 
-  const closePurchaseModal = () => {
+  const closePurchaseModal = useCallback(() => {
     gsap.to(modalRef.current, {
       y: "100%",
       opacity: 0,
@@ -35,7 +35,7 @@ const PurchaseModal = () => {
       duration: 0.5,
       ease: "power2.inOut",
     });
-  };
+  }, [modalRef, setOpenModal, setName, setEmail, setPhone]);
 
   const handlePurchase = () => {
     // Add your purchase logic here
@@ -45,11 +45,13 @@ const PurchaseModal = () => {
     closePurchaseModal();
   };
 
-  const handleClickOutside = (event) => {
-    if (modalRef.current && !modalRef.current.contains(event.target)) {
+  const handleClickOutside = useCallback((event: MouseEvent) => {
+    if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
       closePurchaseModal();
     }
-  };
+  }, [closePurchaseModal]);
+
+  
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
@@ -75,7 +77,7 @@ const PurchaseModal = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [openModal]);
+  }, [openModal, handleClickOutside]);
 
   return (
     <>
