@@ -21,7 +21,7 @@ const InsightCard: React.FC<InsightCardProps> = ({ title, description, icon }) =
           <h3 className="mt-8 text-lg font-semibold text-black dark:text-white">{title}</h3>
 
           {/* Description */}
-          <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">{description}</p>
+          <p className="mt-4 text-xs text-zinc-600 dark:text-zinc-400">{description}</p>
         </div>
       </div>
     </div>

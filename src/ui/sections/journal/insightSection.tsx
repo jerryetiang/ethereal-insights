@@ -7,7 +7,7 @@ interface InsightSectionProps {
 
 const InsightSection: React.FC<InsightSectionProps> = ({ insights }) => {
   return (
-    <section className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:mt-20">
+    <section className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:mt-20">
       {insights.map((insight, index) => (
         <InsightCard
           key={index}
