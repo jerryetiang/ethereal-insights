@@ -10,7 +10,7 @@ const featuredData = [
     theme: "Future Horizons Unveiled",
     title: "Tech Trends Shaping Tomorrow",
     category: "Technology",
-    image: "/featured/technology.jpg",
+    image: "/Featured/technology.jpg",
     alt: "Tech",
     cardDescription:
       "Explore the latest in technology, from AI breakthroughs to cutting-edge innovations, and envision the future of our digital landscape.",
@@ -21,7 +21,7 @@ const featuredData = [
     theme: "Elegance in Every Stroke",
     title: "Harmony in Design: The Art of Balance",
     category: "Art & Design",
-    image: "/featured/art.jpg",
+    image: "/Featured/art.jpg",
     alt: "Art",
     cardDescription:
       "Dive into the world of art and design, discovering the principles that create visual harmony and inspire creative expression.",
@@ -32,7 +32,7 @@ const featuredData = [
     theme: "Resonance Unleashed",
     title: "Exploring Music's Power",
     category: "Music",
-    image: "/featured/music.jpg",
+    image: "/Featured/music.jpg",
     alt: "Music",
     cardDescription:
       "Embark on a sonic journey, exploring the influence of music on emotions, culture, and its transformative power in our lives.",
@@ -43,7 +43,7 @@ const featuredData = [
     theme: "Business Insights",
     title: "Navigating Entrepreneurial Waters",
     category: "Business",
-    image: "/featured/business.jpg",
+    image: "/Featured/business.jpg",
     alt: "Business",
     cardDescription:
       "Gain valuable insights into the business world, from entrepreneurial tips to market trends, empowering you to navigate the corporate seas.",
