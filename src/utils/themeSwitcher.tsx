@@ -9,7 +9,7 @@ const ThemeSwitcher = () => {
     const currentTheme = theme === 'system' ? systemTheme : theme;
 
     const buttonClass = `w-6 h-6 ${
-      currentTheme === 'dark' ? 'text-yellow-500' : 'text-slate-950'
+      currentTheme === 'dark' ? 'text-yellow-500' : 'text-lime-500'
     } ${currentTheme === 'dark' ? 'dark-transition' : ''}`;
 
     const handleThemeToggle = (e: { preventDefault: () => void; }) => {
