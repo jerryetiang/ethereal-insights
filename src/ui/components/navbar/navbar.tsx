@@ -22,10 +22,6 @@ export default function NavigationBar() {
     setIsMenuHidden(true);
   };
 
-  const toggleMenu = () => {
-    setIsMenuHidden(!isMenuHidden);
-  };
-
   return (
     <div className="fixed top-0 w-full z-50">
       <nav className="relative px-4 py-4 flex justify-between items-center bg-white text-black dark:bg-black dark:text-white theme-transition">
@@ -55,15 +51,12 @@ export default function NavigationBar() {
             <NavbarLink key={link.id} link={link} />
           ))}
         </ul>
-        <span
-          className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 rounded-md transition duration-200"
-          
-        >
+        <span className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 rounded-md transition duration-200">
           <ThemeSwitcher />
         </span>
         <Button
           color="dark"
-          className="md:mr-4 md:mb-0 md:w-auto mb-3 inline-flex h-12  items-center justify-center text-lime-300 bg-zinc-800 border border-transparent enabled:hover:bg-zinc-900 focus:ring-4 focus:ring-zinc-300 dark:bg-zinc-800 dark:enabled:hover:bg-zinc-700 dark:focus:ring-zinc-800 dark:border-zinc-700 theme-transition"
+          className="md:mr-4 md:mb-0 md:w-auto mb-3 hidden lg:inline-flex h-12  items-center justify-center text-lime-300 bg-zinc-800 border border-transparent enabled:hover:bg-zinc-900 focus:ring-4 focus:ring-zinc-300 dark:bg-zinc-800 dark:enabled:hover:bg-zinc-700 dark:focus:ring-zinc-800 dark:border-zinc-700 theme-transition"
         >
           Shop
         </Button>
@@ -109,13 +102,18 @@ export default function NavigationBar() {
             </ul>
           </div>
           <div className="mt-auto">
-            <div className="pt-6 animate__animated animate__fadeIn">
-              <ThemeSwitcher />
+          <div className="pt-6 flex flex-row space-x-4 animate__animated animate__fadeIn">
               <Button
                 color="dark"
-                className="md:mr-4 md:mb-0 md:w-auto mb-3 inline-flex h-12  items-center justify-center text-lime-300 bg-zinc-800 border border-transparent enabled:hover:bg-zinc-900 focus:ring-4 focus:ring-zinc-300 dark:bg-zinc-800 dark:enabled:hover:bg-zinc-700 dark:focus:ring-zinc-800 dark:border-zinc-700 theme-transition"
+                className="md:mr-4 md:mb-0 md:w-auto mb-3 inline-flex h-12 items-center justify-center text-lime-300 bg-zinc-800 border border-transparent enabled:hover:bg-zinc-900 focus:ring-4 focus:ring-zinc-300 dark:bg-zinc-800 dark:enabled:hover:bg-zinc-700 dark:focus:ring-zinc-800 dark:border-zinc-700 theme-transition"
               >
-                Learn More
+                <ThemeSwitcher />
+              </Button>
+              <Button
+                color="dark"
+                className="md:mr-4 md:mb-0 md:w-auto mb-3 inline-flex h-12 items-center justify-center text-lime-300 bg-zinc-800 border border-transparent enabled:hover:bg-zinc-900 focus:ring-4 focus:ring-zinc-300 dark:bg-zinc-800 dark:enabled:hover:bg-zinc-700 dark:focus:ring-zinc-800 dark:border-zinc-700 theme-transition"
+              >
+                Shop
               </Button>
             </div>
             <p className="my-4 text-xs text-center text-gray-400">
