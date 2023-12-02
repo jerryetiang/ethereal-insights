@@ -26,10 +26,10 @@ interface NavLink {
       <Link
         href={link.url}
         className={clsx(
-          "text-sm text-gray-400 hover:text-gray-500",
+          "text-sm text-zinc-400 hover:text-lime-500",
           {
             "animate__animated animate__headShake": isHovered,
-            "text-black hover:text-gray": !isHovered,
+            "text-black hover:text-lime-700": !isHovered,
           }
         )}
         onMouseEnter={() => setIsHovered(true)}

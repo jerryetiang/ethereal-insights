@@ -1,6 +1,8 @@
+"use client"
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "flowbite-react";
 
 export default function Header() {
   return (
@@ -19,28 +21,28 @@ export default function Header() {
             </div>
             <div className="lg:max-w-xl lg:pr-5 relative z-10">
               <p className="flex text-sm uppercase text-g1 ">Explore</p>
-              <h2 className="mb-6 max-w-lg text-4xl font-light leading-snug tracking-tight text-g1 sm:text-5xl sm:leading-snug">
+              <h2 className="mb-6 max-w-lg text-4xl font-light leading-snug tracking-tight text-g1 sm:text-5xl sm:leading-snug text-zinc-800 dark:text-zinc-300">
                 Thought provoking
                 <span className="my-1 inline-block border-b-8 border-g4 bg-white dark:bg-black px-4 font-bold text-g4 animate__animated animate__flash theme-transition">
                   Musings
                 </span>
               </h2>
-              <p className="text-base text-gray-700">
+              <p className="text-base text-zinc-700 dark:text-zinc-400 theme-transition">
                 Ethereal Insights is a thought-provoking blog and digital
                 platform designed to delve into the profound and abstract
                 aspects of life, consciousness, and self-reflection
               </p>
               <div className="mt-10 flex flex-col items-center md:flex-row">
-                <Link
-                  href="/"
-                  className="mb-3 inline-flex h-12 w-full items-center justify-center rounded bg-zinc-950 px-6 font-medium tracking-wide text-gray-100 shadow-md transition hover:bg-zinc-900 focus:outline-none md:mr-4 md:mb-0 md:w-auto"
+                <Button
+                  color="dark"
+                  className="md:mr-4 md:mb-0 md:w-auto mb-3 inline-flex h-12  items-center justify-center text-lime-300 bg-zinc-800 border border-transparent enabled:hover:bg-zinc-900 focus:ring-4 focus:ring-zinc-300 dark:bg-zinc-800 dark:enabled:hover:bg-zinc-700 dark:focus:ring-zinc-800 dark:border-zinc-700 theme-transition"
                 >
                   Learn More
-                </Link>
+                </Button>
                 <Link
                   href="/"
                   aria-label="join"
-                  className="group inline-flex items-center font-semibold text-g1"
+                  className="group inline-flex items-center font-semibold text-g1 text-lime-500"
                 >
                   Join the conversation
                   <svg
@@ -60,7 +62,6 @@ export default function Header() {
                 </Link>
               </div>
             </div>
-
           </div>
           <div className="relative hidden lg:ml-4 lg:block lg:w-1/2">
             <svg
@@ -85,7 +86,6 @@ export default function Header() {
                 height={400}
               />
             </div>
-          
           </div>
         </div>
       </div>
@@ -97,7 +97,7 @@ export default function Header() {
           width="800px"
           height="800px"
           viewBox="0 0 24 24"
-          className="w-96 z-0 h-full object-fill fill-gray-300 text-gray-300"
+          className="w-96 z-0 h-full object-fill fill-zinc-300 text-zinc-300"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >

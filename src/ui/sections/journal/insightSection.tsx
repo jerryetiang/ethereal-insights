@@ -1,4 +1,4 @@
-import InsightCard from "@/ui/components/card/insightCard";
+import InsightCard from "@/ui/sections/journal/insightCard";
 import React from "react";
 
 interface InsightSectionProps {

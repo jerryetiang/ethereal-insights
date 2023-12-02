@@ -9,7 +9,7 @@ const insights = [
       "Lay-flat hardcover indexed with dot grid and an inner pocket marrying aesthetics and function for an exceptional writing experience.",
     icon: (
       <svg
-        className="w-16 h-16 fill-gray-400 dark:group-hover:fill-gray-100 group-hover:fill-black theme-transition"
+        className="w-16 h-16 fill-zinc-400 dark:group-hover:fill-zinc-100 group-hover:fill-zinc-900 theme-transition"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         fill="currentColor"
@@ -25,7 +25,7 @@ const insights = [
       "With perforated habit trackers and daily quotes for inspiration, Illuminations maximizes productivity and creativity effortlessly.",
     icon: (
       <svg
-        className="w-16 h-16 fill-gray-400 dark:group-hover:fill-gray-100 group-hover:fill-black theme-transition"
+        className="w-16 h-16 fill-zinc-400 dark:group-hover:fill-zinc-100 group-hover:fill-zinc-900 theme-transition"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         fill="currentColor"
