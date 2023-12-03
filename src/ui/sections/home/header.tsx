@@ -41,7 +41,7 @@ export default function Header() {
     // tl.to(meditatingWomanRef.current, { x: "+=50", duration: 5, yoyo: true, repeat: -1 });
 
     tl.eventCallback("onComplete", () => {
-      setIsLoading(false)
+      setIsLoading(false);
     });
 
     return () => {
@@ -51,14 +51,16 @@ export default function Header() {
 
   return (
     <div className="dark:bg-black dark:text-light bg-white relative flex items-center justify-center overflow-hidden theme-transition h-screen mx-auto">
-       <div
-       ref={loaderRef}
+      <div
+        ref={loaderRef}
         className={`absolute inset-0 flex items-center justify-center bg-white dark:bg-black opacity-75 transition-opacity ${
-          isLoading ? 'opacity-100' : 'opacity-0'
+          isLoading ? "opacity-100" : "opacity-0"
         }`}
       >
         {/* Loader content */}
-        {isLoading && <span className="text-4xl font-bold">Ethereal Insights</span>}
+        {isLoading && (
+          <span className="text-4xl font-bold">Ethereal Insights</span>
+        )}
       </div>
       <div className="relative mx-auto h-screen px-4 pb-20 md:pb-10 sm:max-w-xl md:max-w-full md:px-24 lg:max-w-screen-xl lg:px-8 flex flex-col items-center justify-center animate__animated animate__fadeIn">
         <div className="flex flex-col items-center justify-between lg:flex-row py-16">
@@ -88,29 +90,34 @@ export default function Header() {
                 aspects of life, consciousness, and self-reflection
               </p>
               <div className=" mt-10 flex flex-col items-center md:flex-row">
-                {/* Your Button component */}
-              </div>
-              <Link
-                href="/"
-                aria-label="join"
-                className=" group inline-flex items-center font-semibold text-g1 text-lime-500"
-              >
-                Join the conversation
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className=" ml-4 h-6 w-6 transition-transform group-hover:translate-x-2"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
+                <Button
+                  color="dark"
+                  className="md:mr-4 md:mb-0 md:w-auto mb-3 inline-flex h-12  items-center justify-center text-lime-300 bg-zinc-800 border border-transparent enabled:hover:bg-zinc-900 focus:ring-4 focus:ring-zinc-300 dark:bg-zinc-800 dark:enabled:hover:bg-zinc-700 dark:focus:ring-zinc-800 dark:border-zinc-700 theme-transition"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </Link>
+                  Learn More
+                </Button>
+                <Link
+                  href="/"
+                  aria-label="join"
+                  className=" group inline-flex items-center font-semibold text-g1 text-lime-500"
+                >
+                  Join the conversation
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className=" ml-4 h-6 w-6 transition-transform group-hover:translate-x-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </Link>
+              </div>
             </div>
           </div>
           <div className="relative hidden lg:ml-4 lg:block lg:w-1/2">
