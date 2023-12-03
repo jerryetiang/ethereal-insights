@@ -7,7 +7,7 @@ import { Button } from "flowbite-react";
 export default function Header() {
   return (
     <div className="dark:bg-black dark:text-light bg-white relative flex items-center justify-center overflow-hidden theme-transition h-screen mx-auto">
-      <div className="relative mx-auto h-screen px-4 pb-20 md:pb-10 sm:max-w-xl md:max-w-full md:px-24 lg:max-w-screen-xl lg:px-8 flex flex-col items-center justify-center">
+      <div className="relative mx-auto h-screen px-4 pb-20 md:pb-10 sm:max-w-xl md:max-w-full md:px-24 lg:max-w-screen-xl lg:px-8 flex flex-col items-center justify-center animate__animated animate__fadeIn">
         <div className="flex flex-col items-center justify-between lg:flex-row py-16">
           <div className=" relative mt-4">
             <div className=" absolute top-0 -left-48">

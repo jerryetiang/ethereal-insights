@@ -83,7 +83,7 @@ const PurchaseModal = () => {
     <>
       <button
         onClick={openPurchaseModal}
-        className="mb-3 mt-4 inline-flex h-12 w-full items-center justify-center rounded bg-zinc-950 px-6 font-medium tracking-wide text-zinc-100 shadow-md transition hover:bg-zinc-900 focus:outline-none"
+        className="text-zinc-100 bg-lime-700 hover:bg-lime-800 focus:ring-4 focus:outline-none focus:ring-lime-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800"
       >
         Purchase
       </button>

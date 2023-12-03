@@ -103,12 +103,12 @@ export default function NavigationBar() {
           </div>
           <div className="mt-auto">
           <div className="pt-6 flex flex-row space-x-4 animate__animated animate__fadeIn">
-              <Button
+              <span
                 color="dark"
-                className="md:mr-4 md:mb-0 md:w-auto mb-3 inline-flex h-12 items-center justify-center text-lime-300 bg-zinc-800 border border-transparent enabled:hover:bg-zinc-900 focus:ring-4 focus:ring-zinc-300 dark:bg-zinc-800 dark:enabled:hover:bg-zinc-700 dark:focus:ring-zinc-800 dark:border-zinc-700 theme-transition"
+                className="md:mr-4 md:mb-0 md:w-auto mb-3 inline-flex h-12 items-center justify-center"
               >
                 <ThemeSwitcher />
-              </Button>
+              </span>
               <Button
                 color="dark"
                 className="md:mr-4 md:mb-0 md:w-auto mb-3 inline-flex h-12 items-center justify-center text-lime-300 bg-zinc-800 border border-transparent enabled:hover:bg-zinc-900 focus:ring-4 focus:ring-zinc-300 dark:bg-zinc-800 dark:enabled:hover:bg-zinc-700 dark:focus:ring-zinc-800 dark:border-zinc-700 theme-transition"
