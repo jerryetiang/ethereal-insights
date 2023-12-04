@@ -27,7 +27,7 @@ export default function NavigationBar() {
       <nav className="relative px-4 py-4 flex justify-between items-center bg-white text-black dark:bg-black dark:text-white theme-transition">
         <Link
           className="text-3xl font-bold leading-none text-zinc-900 dark:text-white theme-transition"
-          href="#"
+          href="/"
         >
           <span>{logoText}</span>
         </Link>
@@ -73,7 +73,7 @@ export default function NavigationBar() {
           <div className="flex items-center mb-8 bg-white dark:bg-black ">
             <Link
               className="mr-auto text-xl font-bold text-black dark:text-white leading-none theme-transition"
-              href="#"
+              href="/"
             >
               <span>{logoText}</span>
             </Link>

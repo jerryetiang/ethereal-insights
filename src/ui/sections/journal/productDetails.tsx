@@ -17,7 +17,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({
   price,
 }) => {
   return (
-    <article>
+    <article className="z-10">
       {/* Product Image */}
       <Image
         src={imageUrl}

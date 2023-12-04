@@ -5,67 +5,84 @@ import Link from "next/link";
 import { Button } from "flowbite-react";
 import BGShape from "@/ui/components/BGShape";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Header() {
   const meditatingWomanRef = useRef(null);
   const textRef = useRef(null);
   const loaderRef = useRef(null);
-  const [isLoading, setIsLoading] = useState(true); // State to manage loading state
+  const headerRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Animate the woman meditating with GSAP
     const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
 
-    tl.to(loaderRef.current, { opacity: 0, duration: 1, delay: 0.5 }); // Fade out the loader after 0.5 seconds
+    // Fade in loader
+    tl.to(loaderRef.current, { opacity: 1, duration: 0.5 });
+    tl.to(loaderRef.current, { opacity: 0, duration: 1 }, "+=0.5"); // Fade out loader 0.5s after it fades in
 
-    setIsLoading(false); // Set loading state to false as soon as the animations start
-
-    // Animation for the text
     tl.fromTo(
       Object.values(textRef),
       { scale: 0, opacity: 0, y: "+=20" },
       { scale: 1, opacity: 1, y: 0, stagger: 0.2, duration: 1 },
-      0 // Start the text animation from the beginning
+      "+=0.1" // Start the text animation 0.25s before the loader fades out
     );
 
     tl.fromTo(
       meditatingWomanRef.current,
       { scale: 0, opacity: 0 },
-      { scale: 1, opacity: 1, duration: 2 },
-      "-=1" // Start the woman meditating animation 1 second before the text animation ends
+      { scale: 1, opacity: 1, duration: 1 },
+      "-=1"
     );
-
-    // Optional: Add more animations to tl as needed
-
-    // You can adjust the options and add more animations as needed
-    // tl.to(meditatingWomanRef.current, { x: "+=50", duration: 5, yoyo: true, repeat: -1 });
 
     tl.eventCallback("onComplete", () => {
       setIsLoading(false);
     });
 
     return () => {
-      tl.kill(); // Kill the animation on unmount
+      tl.kill();
     };
   }, []);
 
+  useEffect(() => {
+    gsap.set(headerRef.current, { opacity: 1 });
+
+    // Fade out header content
+    gsap.to(headerRef.current, {
+      scrollTrigger: {
+        pin: true,
+        trigger: headerRef.current,
+        start: "center top",
+        end: "center top",
+        pinSpacing: false,
+        scrub: 2,
+      },
+      opacity: 0,
+      duration: 1,
+      ease: "power2.inOut" 
+    });
+  }, []);
+
   return (
-    <div className="dark:bg-black dark:text-light bg-white relative flex items-center justify-center overflow-hidden theme-transition h-screen mx-auto">
+    <div className="dark:bg-black dark:text-light bg-white relative flex items-center justify-center overflow-hidden theme-transition h-screen mx-auto animate__animated animate__fadeIn">
+      {/* Loader content */}
+      {isLoading && (
+        <div
+          ref={loaderRef}
+          className={`opacity-10 inset-0 transition-opacity absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center bg-opacity-100 z-50`}
+        >
+          <span className="text-4xl font-bold text-zinc-900 dark:text-zinc-300">Ethereal Insights</span>
+        </div>
+      )}
       <div
-        ref={loaderRef}
-        className={`absolute inset-0 flex items-center justify-center bg-white dark:bg-black opacity-75 transition-opacity ${
-          isLoading ? "opacity-100" : "opacity-0"
-        }`}
+        ref={headerRef}
+        className="opacity-0 z-10 relative mx-auto h-screen px-4 pb-20 md:pb-10 sm:max-w-xl md:max-w-full md:px-24 lg:max-w-screen-xl lg:px-8 flex flex-col items-center justify-center animate__animated animate__fadeIn"
       >
-        {/* Loader content */}
-        {isLoading && (
-          <span className="text-4xl font-bold">Ethereal Insights</span>
-        )}
-      </div>
-      <div className="relative mx-auto h-screen px-4 pb-20 md:pb-10 sm:max-w-xl md:max-w-full md:px-24 lg:max-w-screen-xl lg:px-8 flex flex-col items-center justify-center animate__animated animate__fadeIn">
         <div className="flex flex-col items-center justify-between lg:flex-row py-16">
           <div className="scale-0 opacity-0 relative mt-4" ref={textRef}>
-            <div className=" absolute top-0 -left-48">
+            <div className="z-10 absolute top-0 -left-48">
               <Image
                 src="/palm-tree.png"
                 className="w-36 h-full object-fill fill-y text-y"
@@ -89,7 +106,7 @@ export default function Header() {
                 platform designed to delve into the profound and abstract
                 aspects of life, consciousness, and self-reflection
               </p>
-              <div className=" mt-10 flex flex-col items-center md:flex-row">
+              <div className="z-10 mt-10 flex flex-col items-center md:flex-row">
                 <Button
                   color="dark"
                   className="md:mr-4 md:mb-0 md:w-auto mb-3 inline-flex h-12  items-center justify-center text-lime-300 bg-zinc-800 border border-transparent enabled:hover:bg-zinc-900 focus:ring-4 focus:ring-zinc-300 dark:bg-zinc-800 dark:enabled:hover:bg-zinc-700 dark:focus:ring-zinc-800 dark:border-zinc-700 theme-transition"
@@ -137,10 +154,10 @@ export default function Header() {
             </svg>
             <div
               ref={meditatingWomanRef}
-              className="scale-0 opacity-0 bg-white dark:bg-black mx-auto w-fit overflow-hidden rounded-[6rem] rounded-br-none rounded-tl-none theme-transition"
+              className="z-10 scale-0 opacity-0 mx-auto w-fit overflow-hidden rounded-[6rem] rounded-br-none rounded-tl-none theme-transition"
             >
               <Image
-                src="/woman-meditating.png"
+                src="/woman-meditating.svg"
                 alt="woman meditating"
                 width={400}
                 height={400}
@@ -218,47 +235,6 @@ export default function Header() {
         size={400}
         position={{ top: "10vh", left: "70vw" }}
       />
-
-      {/* Idle path */}
-      {/* <div className="absolute -bottom-24 left-10 z-0 opacity-50">
-        <svg
-          width="800px"
-          height="800px"
-          viewBox="0 0 24 24"
-          className="w-96 z-0 h-full object-fill fill-lime-300 text-lime-300"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-           <circle cx="12" cy="12" r="6" fill="#84CC16" />
-        </svg>
-      </div> */}
-
-      {/* idle path */}
-      {/* <div className="absolute -bottom-0 left-3/4 z-0 opacity-50 ">
-        <svg
-          width="800px"
-          height="800px"
-          viewBox="0 0 256 256"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-48 z-0  h-full -rotate-90 object-fill fill-lime-300 text-lime-300"
-        >
-          <circle cx="128" cy="128" r="64" fill="#84CC16" />
-        </svg>
-      </div> */}
-
-      {/* Idle path */}
-      {/* <div className=" absolute top-10 left-3/4 z-0 opacity-50 ">
-        <svg
-          fill="#000000"
-          width="800px"
-          height="800px"
-          viewBox="0 0 256 256"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-96 z-0 h-full object-fill fill-lime-300 text-lime-300"
-        >
-          <circle cx="128" cy="128" r="64" fill="#84CC16" />
-        </svg>
-      </div> */}
     </div>
   );
 }
