@@ -17,6 +17,7 @@ export default function Header() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Animate the woman meditating with GSAP
     const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
 
     // Fade in loader
@@ -33,48 +34,34 @@ export default function Header() {
     tl.fromTo(
       meditatingWomanRef.current,
       { scale: 0, opacity: 0 },
-      { scale: 1, opacity: 1, duration: 1 },
-      "-=1"
+      { scale: 1, opacity: 1, duration: 2 },
+      "-=1" // Start the woman meditating animation 1 second before the text animation ends
     );
+
+    // Optional: Add more animations to tl as needed
+
+    // You can adjust the options and add more animations as needed
+    // tl.to(meditatingWomanRef.current, { x: "+=50", duration: 5, yoyo: true, repeat: -1 });
 
     tl.eventCallback("onComplete", () => {
       setIsLoading(false);
     });
 
     return () => {
-      tl.kill();
+      tl.kill(); // Kill the animation on unmount
     };
-  }, []);
-
-  useEffect(() => {
-    gsap.set(headerRef.current, { opacity: 1 });
-
-    // Fade out header content
-    gsap.to(headerRef.current, {
-      scrollTrigger: {
-        pin: true,
-        trigger: headerRef.current,
-        start: "center top",
-        end: "center top",
-        pinSpacing: false,
-        scrub: 2,
-      },
-      opacity: 0,
-      duration: 1,
-      ease: "power2.inOut" 
-    });
   }, []);
 
   return (
     <div className="dark:bg-black dark:text-light bg-white relative flex items-center justify-center overflow-hidden theme-transition h-screen mx-auto animate__animated animate__fadeIn">
-      {/* Loader content */}
+{/* Loader content */}
       {isLoading && (
-        <div
-          ref={loaderRef}
-          className={`opacity-10 inset-0 transition-opacity absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center bg-opacity-100 z-50`}
-        >
-          <span className="text-4xl font-bold text-zinc-900 dark:text-zinc-300">Ethereal Insights</span>
-        </div>
+      <div
+        ref={loaderRef}
+        className={`opacity-10 inset-0 transition-opacity absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center bg-opacity-100 z-50`}
+      >
+        <span className="text-4xl font-bold text-zinc-900 dark:text-zinc-300">Ethereal Insights</span>
+              </div>
       )}
       <div
         ref={headerRef}
@@ -235,6 +222,47 @@ export default function Header() {
         size={400}
         position={{ top: "10vh", left: "70vw" }}
       />
+
+      {/* Idle path */}
+      {/* <div className="absolute -bottom-24 left-10 z-0 opacity-50">
+        <svg
+          width="800px"
+          height="800px"
+          viewBox="0 0 24 24"
+          className="w-96 z-0 h-full object-fill fill-lime-300 text-lime-300"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+           <circle cx="12" cy="12" r="6" fill="#84CC16" />
+        </svg>
+      </div> */}
+
+      {/* idle path */}
+      {/* <div className="absolute -bottom-0 left-3/4 z-0 opacity-50 ">
+        <svg
+          width="800px"
+          height="800px"
+          viewBox="0 0 256 256"
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-48 z-0  h-full -rotate-90 object-fill fill-lime-300 text-lime-300"
+        >
+          <circle cx="128" cy="128" r="64" fill="#84CC16" />
+        </svg>
+      </div> */}
+
+      {/* Idle path */}
+      {/* <div className=" absolute top-10 left-3/4 z-0 opacity-50 ">
+        <svg
+          fill="#000000"
+          width="800px"
+          height="800px"
+          viewBox="0 0 256 256"
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-96 z-0 h-full object-fill fill-lime-300 text-lime-300"
+        >
+          <circle cx="128" cy="128" r="64" fill="#84CC16" />
+        </svg>
+      </div> */}
     </div>
   );
 }
