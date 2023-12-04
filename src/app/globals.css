@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply dark:bg-black bg-white;
+    transition: background-color 0.5s, color 0.5s;
+  }
+}
+
+.theme-transition {
+  transition: background-color 0.5s, color 0.5s;
+}
+
+.horizontal-scroll-container {
+  display: flex;
+  width: 600%; /* 100% per card */
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+}
+
+.feature-card {
+  flex: 1;
+  min-width: 100%;
+  scroll-snap-align: start;
+  border: 1px solid #ddd;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
