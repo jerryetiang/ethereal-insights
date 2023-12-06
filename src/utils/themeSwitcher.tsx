@@ -2,7 +2,11 @@
 import React from 'react';
 import { useTheme } from 'next-themes';
 
-const ThemeSwitcher = () => {
+interface ThemeSwitcherProps {
+  onThemeChange: (isDark: boolean) => void;
+}
+
+const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ onThemeChange }) => {
   const { systemTheme, theme, setTheme } = useTheme();
 
   const renderThemeChanger = () => {
@@ -12,11 +16,13 @@ const ThemeSwitcher = () => {
       currentTheme === 'dark' ? 'text-yellow-500' : 'text-lime-500'
     } ${currentTheme === 'dark' ? 'dark-transition' : ''}`;
 
-    const handleThemeToggle = (e: { preventDefault: () => void; }) => {
-      e.preventDefault(); // Prevent the default behavior (e.g., page reload)
-
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      setTheme(newTheme);
+    const handleThemeToggle = (e: { preventDefault: () => void }) => {
+      e.preventDefault();
+    
+      const isDark: boolean = currentTheme === 'dark';
+    
+      onThemeChange(!isDark);
+      setTheme(isDark ? 'light' : 'dark');
     };
 
     return (

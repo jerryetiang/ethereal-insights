@@ -1,7 +1,7 @@
-import FeaturedPosts from "@/ui/sections/featured/featuredPosts";
-import FooterSection from "@/ui/sections/footer";
-import Header from "@/ui/sections/home/header";
-import Journal from "@/ui/sections/journal/journal";
+import FeaturedPosts from "@/ui/featured/featuredPosts";
+import FooterSection from "@/ui/footer";
+import Header from "@/ui/home/header";
+import Journal from "@/ui/journal";
 import React from "react";
 
 export default function Page() {
@@ -16,9 +16,7 @@ export default function Page() {
       <section id="journal">
         <Journal />
       </section>
-      <section id="footer">
-        <FooterSection />
-      </section>
+    
     </div>
   );
 }
