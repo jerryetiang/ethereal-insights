@@ -1,36 +1,52 @@
 "use client";
-import "@/app/globals.css"
-import React, { useState } from "react";
-import NavLinks from "./nav-links";
+
 import Link from "next/link";
-import MobileLinks from "./mobile-links";
+import { useState } from "react";
+import { MobileNavItem } from "@/ui/navbar/mobileLinks";
+import { navLinks } from "./data";
+import { NavbarLink } from "@/ui/navbar/navLinks";
+import { Button } from "flowbite-react";
+import ThemeSwitcher from "@/utils/themeSwitcher";
+import CurrentYear from "@/lib/date";
+import Image from "next/image";
 
-const navLinks = [
-  { id: 1, title: "Technology", url: "/technology" },
-  { id: 2, title: "Art & Design", url: "/art-design" },
-  { id: 3, title: "Music", url: "/music" },
-  { id: 4, title: "Business", url: "/business" },
-];
-
-const siteTitle = "Etherial Insights";
-
-const NavigationBar = () => {
+export default function NavigationBar() {
   const [isMenuHidden, setIsMenuHidden] = useState(true);
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuHidden(!isMenuHidden);
+  // Function to update isDarkTheme state
+  const handleThemeChange = (isDark: boolean) => {
+    setIsDarkTheme(isDark);
   };
 
+  const shownMenu = () => {
+    setIsMenuHidden(false);
+  };
+
+  const hideMenu = () => {
+    setIsMenuHidden(true);
+  };
+
+  const logoSrc = isDarkTheme ? "/logo/dark.svg" : "/logo/light.svg";
+
   return (
-    <div>
-      <nav className="relative px-4 py-4 flex justify-between items-center bg-white">
-        <Link className="text-2xl font-bold leading-none" href="#">
-          <span>{siteTitle}</span>
+    <div className="fixed top-0 w-full z-50">
+      <nav className="relative px-4 py-4 flex justify-between items-center bg-white text-black dark:bg-black dark:text-white theme-transition">
+        <Link
+          className="text-3xl font-bold leading-none text-zinc-700 dark:text-zinc-300 theme-transition"
+          href="/"
+        >
+          <Image
+            src={logoSrc}
+            alt="Ethereal Insights logo"
+            width={300}
+            height={100}
+          />
         </Link>
         <div className="lg:hidden">
           <button
-            className="navbar-burger flex items-center text-blue-600 p-3"
-            onClick={toggleMenu}
+            className="navbar-burger flex items-center text-zinc-700 dark:text-white p-3 theme-transition"
+            onClick={shownMenu}
           >
             <svg
               className="block h-4 w-4 fill-current"
@@ -42,32 +58,49 @@ const NavigationBar = () => {
             </svg>
           </button>
         </div>
-        {/* <NavLinks links={navLinks} /> */}
-        <a
-          className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200"
-          href="#"
-        >
-          Sign In
-        </a>
-        <a
-          className="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200"
-          href="#"
-        >
-          Sign up
-        </a>
+        <ul className="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:items-center lg:w-auto lg:space-x-6 animate__animated animate__fadeIn">
+          {navLinks.map((link) => (
+            <NavbarLink key={link.id} link={link} />
+          ))}
+        </ul>
+        <span className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 rounded-md transition duration-200">
+          <ThemeSwitcher
+            onThemeChange={(isDark: boolean) => handleThemeChange(isDark)}
+          />
+        </span>
+        <Link href={"/shop"}>
+          <Button
+            color="dark"
+            className="md:mr-4 md:mb-0 md:w-auto mb-3 hidden lg:inline-flex h-12  items-center justify-center text-lime-300 bg-zinc-800 border border-transparent enabled:hover:bg-zinc-900 focus:ring-4 focus:ring-zinc-300 dark:bg-zinc-800 dark:enabled:hover:bg-zinc-700 dark:focus:ring-zinc-800 dark:border-zinc-700 theme-transition"
+          >
+            Shop
+          </Button>
+        </Link>
       </nav>
       <div
-        className={`navbar-menu relative z-50 ${isMenuHidden ? "hidden" : ""}`}
+        className={`navbar-menu relative z-50 ${
+          isMenuHidden
+            ? "hidden animate__animated animate__fadeOut"
+            : "animate__animated animate__fadeIn"
+        }`}
       >
-        <div className="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25" />
-        <nav className="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
-          <div className="flex items-center mb-8">
-            <Link className="mr-auto text-xl font-bold leading-none" href="#">
-              <span>{siteTitle}</span>
+        <div className="navbar-backdrop fixed inset-0 bg-zinc-800 opacity-25" />
+        <nav className="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white dark:bg-black border-r overflow-y-auto theme-transition">
+          <div className="flex items-center mb-8 bg-white dark:bg-black ">
+            <Link
+              className="mr-auto text-xl font-bold text-zinc-700 dark:text-white leading-none theme-transition"
+              href="/"
+            >
+              <Image
+                src={"/logo/light.svg"}
+                alt="Ethereal Insights logo"
+                width={300}
+                height={100}
+              />
             </Link>
-            <button className="navbar-close" onClick={toggleMenu}>
+            <button className="navbar-close" onClick={hideMenu}>
               <svg
-                className="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500"
+                className="h-6 w-6 text-zinc-400 cursor-pointer hover:text-zinc-500"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -83,31 +116,37 @@ const NavigationBar = () => {
             </button>
           </div>
           <div>
-            {/* <MobileLinks links={navLinks} /> */}
+            <ul className="animate__animated animate__fadeIn">
+              {navLinks.map((link) => (
+                <MobileNavItem key={link.id} link={link} />
+              ))}
+            </ul>
           </div>
           <div className="mt-auto">
-            <div className="pt-6">
-              <a
-                className="block px-4 py-3 mb-3 text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl"
-                href="#"
+            <div className="pt-6 flex flex-row space-x-4 animate__animated animate__fadeIn">
+              <span
+                color="dark"
+                className="md:mr-4 md:mb-0 md:w-auto mb-3 inline-flex h-12 items-center justify-center"
               >
-                Sign in
-              </a>
-              <a
-                className="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl"
-                href="#"
+                <ThemeSwitcher
+                  onThemeChange={(isDark: boolean) => handleThemeChange(isDark)}
+                />
+              </span>
+              <Button
+                color="dark"
+                className="md:mr-4 md:mb-0 md:w-auto mb-3 inline-flex h-12 items-center justify-center text-lime-300 bg-zinc-800 border border-transparent enabled:hover:bg-zinc-900 focus:ring-4 focus:ring-zinc-300 dark:bg-zinc-800 dark:enabled:hover:bg-zinc-700 dark:focus:ring-zinc-800 dark:border-zinc-700 theme-transition"
               >
-                Sign Up
-              </a>
+                Shop
+              </Button>
             </div>
-            <p className="my-4 text-xs text-center text-gray-400">
-              <span>Copyright © 2021</span>
+            <p className="my-4 text-xs text-center text-zinc-400">
+              <span>
+                Copyright © <CurrentYear />
+              </span>
             </p>
           </div>
         </nav>
       </div>
     </div>
   );
-};
-
-export default NavigationBar;
+}
