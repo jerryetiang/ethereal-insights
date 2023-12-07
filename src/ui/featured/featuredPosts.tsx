@@ -7,7 +7,7 @@ import { featuredData } from "./data";
 
 const FeaturedPosts = () => {
   return (
-    <div className="flex flex-wrap p-4 md:p-16">
+    <div className="flex flex-wrap px-4 md:px-16">
       {/* Wider Column - Featured Posts Grid */}
       <div className="w-full md:w-2/3 p-4 md:p-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

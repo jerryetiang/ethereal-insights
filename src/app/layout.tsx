@@ -6,10 +6,11 @@ import Provider from "@/utils/provider";
 import NavigationBar from "@/ui/navbar";
 import { Analytics } from "@vercel/analytics/react";
 import FooterSection from "@/ui/footer";
+import Background from "@/ui/background";
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: "400",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -29,11 +30,12 @@ export default function RootLayout({
       >
         <Provider>
           <NavigationBar />
-          <main className="">{children}</main>
+          <main className="mt-20 p-2 min-h-screen">{children}</main>
           <Analytics />
           <section id="footer">
             <FooterSection />
           </section>
+          <Background />
         </Provider>
       </body>
     </html>
