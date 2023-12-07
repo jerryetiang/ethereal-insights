@@ -15,8 +15,7 @@ export default function Page() {
       </section>
       <section id="journal">
         <Journal />
-      </section>
-    
+      </section>    
     </div>
   );
 }
