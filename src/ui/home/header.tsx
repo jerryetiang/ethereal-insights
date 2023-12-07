@@ -6,7 +6,7 @@ import { Button } from "flowbite-react";
 import BGShape from "@/ui/home/BGShape";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useTheme } from 'next-themes';
+import { useTheme } from "next-themes";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,10 +17,8 @@ export default function Header() {
   const headerRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  
   const { systemTheme, theme } = useTheme();
   const [isDarkTheme, setIsDarkTheme] = useState(false);
-
 
   useEffect(() => {
     // Animate the woman meditating with GSAP
@@ -57,16 +55,20 @@ export default function Header() {
       tl.kill(); // Kill the animation on unmount
     };
   }, []);
-  
+
   useEffect(() => {
     // Set the initial theme when the component mounts
-    setIsDarkTheme(theme === 'dark' || (theme === 'system' && systemTheme === 'dark'));
+    setIsDarkTheme(
+      theme === "dark" || (theme === "system" && systemTheme === "dark")
+    );
   }, [theme, systemTheme]);
 
-  const logoSrc = isDarkTheme ? '/logo/dark.svg' : '/logo/light.svg';
+  const logoSrc = isDarkTheme ? "/logo/dark.svg" : "/logo/light.svg";
 
   // Function to update isDarkTheme state
-  const handleThemeChange = (isDark: boolean | ((prevState: boolean) => boolean)) => {
+  const handleThemeChange = (
+    isDark: boolean | ((prevState: boolean) => boolean)
+  ) => {
     setIsDarkTheme(isDark);
   };
 
@@ -81,8 +83,8 @@ export default function Header() {
           <Image
             src={logoSrc}
             alt="Ethereal Insights logo"
-            width={300}
-            height={100}
+            width={600}
+            height={400}
           />{" "}
         </div>
       )}
@@ -105,16 +107,22 @@ export default function Header() {
               <p className=" flex text-sm uppercase text-g1 text-lime-600">
                 Explore
               </p>
-              <h2 className=" mb-6 text-9xl font-bold leading-snug tracking-tight text-g1 sm:text-5xl sm:leading-snug text-zinc-800 dark:text-zinc-300">
+              <h2 className=" mb-6 text-9xl font-black leading-snug tracking-tight text-g1 sm:text-5xl sm:leading-snug text-zinc-800 dark:text-zinc-300">
                 Thought provoking
-                <span className="my-1 inline-block text-lime-600 border-b-8 border-g4 bg-white dark:bg-black px-4 font-medium text-g4 animate__animated animate__flash theme-transition">
+                <span className="my-1 inline-block text-lime-600 border-b-8 border-g4 bg-white dark:bg-black font-bold text-g4 animate__animated animate__flash theme-transition">
                   Musings
                 </span>
               </h2>
               <p className=" text-base text-zinc-700 dark:text-zinc-400 theme-transition">
-                Ethereal Insights is a thought-provoking blog and digital
-                platform designed to delve into the profound and abstract
-                aspects of life, consciousness, and self-reflection
+                Step into the enigmatic expanse of Ethereal Insights, where the
+                tapestry of knowledge is woven with threads of profound
+                curiosity and contemplation meets the boundless expanse of
+                curiosity. Each page is an invitation to explore, to embark on a
+                journey of intellectual discovery.
+              </p>
+              <p className="mt-4 text-base text-zinc-700 dark:text-zinc-400 theme-transition">
+                Ultimately, we aspire to spark reflections that linger, leaving
+                an indelible mark on the canvas of your intellectual curiosity.
               </p>
               <div className="z-10 mt-10 flex flex-col items-center md:flex-row">
                 <Button
