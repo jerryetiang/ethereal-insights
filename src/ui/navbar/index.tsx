@@ -31,7 +31,7 @@ export default function NavigationBar() {
 
   return (
     <div className="fixed top-0 w-full z-50">
-      <nav className="relative px-4 py-4 flex justify-between items-center bg-white text-black dark:bg-black dark:text-white theme-transition">
+      <nav className="relative px-4 py-4 flex justify-between items-center bg-white text-zinc-700 dark:bg-black dark:text-white theme-transition">
         <Link
           className="text-3xl font-bold leading-none text-zinc-700 dark:text-zinc-300 theme-transition"
           href="/"
@@ -45,7 +45,7 @@ export default function NavigationBar() {
         </Link>
         <div className="lg:hidden">
           <button
-            className="navbar-burger flex items-center text-zinc-700 dark:text-white p-3 theme-transition"
+            className="navbar-burger flex items-center text-zinc-700 dark:text-zinc-300 p-3 theme-transition"
             onClick={shownMenu}
           >
             <svg
@@ -71,7 +71,7 @@ export default function NavigationBar() {
         <Link href={"/shop"}>
           <Button
             color="dark"
-            className="md:mr-4 md:mb-0 md:w-auto mb-3 hidden lg:inline-flex h-12  items-center justify-center text-lime-300 bg-zinc-800 border border-transparent enabled:hover:bg-zinc-900 focus:ring-4 focus:ring-zinc-300 dark:bg-zinc-800 dark:enabled:hover:bg-zinc-700 dark:focus:ring-zinc-800 dark:border-zinc-700 theme-transition"
+            className="md:mr-4 md:mb-0 md:w-auto mb-3 hidden lg:inline-flex h-12  items-center justify-center text-lime-400 bg-zinc-800 border border-transparent enabled:hover:bg-zinc-900 focus:ring-4 focus:ring-zinc-300 dark:bg-zinc-800 dark:enabled:hover:bg-zinc-700 dark:focus:ring-zinc-800 dark:border-zinc-700 theme-transition"
           >
             Shop
           </Button>

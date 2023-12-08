@@ -1,6 +1,7 @@
 "use client";
 import { useState, useRef, useEffect, useCallback } from "react";
 import gsap from "gsap";
+import { Button } from "flowbite-react";
 
 const PurchaseModal = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -45,13 +46,17 @@ const PurchaseModal = () => {
     closePurchaseModal();
   };
 
-  const handleClickOutside = useCallback((event: MouseEvent) => {
-    if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
-      closePurchaseModal();
-    }
-  }, [closePurchaseModal]);
-
-  
+  const handleClickOutside = useCallback(
+    (event: MouseEvent) => {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target as Node)
+      ) {
+        closePurchaseModal();
+      }
+    },
+    [closePurchaseModal]
+  );
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
@@ -81,12 +86,13 @@ const PurchaseModal = () => {
 
   return (
     <>
-      <button
+      <Button
         onClick={openPurchaseModal}
-        className="text-zinc-100 bg-lime-700 hover:bg-lime-800 focus:ring-4 focus:outline-none focus:ring-lime-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800"
+        color="dark"
+        className="mx-auto text-lime-400 bg-zinc-800 enabled:hover:bg-zinc-900 focus:ring-zinc-300 dark:bg-zinc-800 dark:enabled:hover:bg-zinc-700 dark:focus:ring-zinc-800 dark:border-zinc-700 theme-transition"
       >
         Purchase
-      </button>
+      </Button>
 
       {openModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
@@ -98,20 +104,6 @@ const PurchaseModal = () => {
             ref={modalRef}
             className="z-50 bg-white dark:bg-zinc-800 p-8 rounded-lg max-w-md w-full sm:w-96 relative"
           >
-            {/* <button
-              onClick={closePurchaseModal}
-              className="absolute top-0 right-0 m-4 text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-300 cursor-pointer"
-            >
-              <svg
-                className="w-6 h-6 text-gray-800 dark:text-white"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 11.793a1 1 0 1 1-1.414 1.414L10 11.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L8.586 10 6.293 7.707a1 1 0 0 1 1.414-1.414L10 8.586l2.293-2.293a1 1 0 0 1 1.414 1.414L11.414 10l2.293 2.293Z" />
-              </svg>
-            </button> */}
             <h2 className="text-2xl font-semibold mb-4 text-zinc-900 dark:text-white">
               Purchase this Item
             </h2>

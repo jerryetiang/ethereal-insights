@@ -102,7 +102,7 @@ const BGShape: React.FC<BGShapeProps> = ({
     <div
       ref={shapeRef}
       style={position || getRandomPosition()}
-      className={`z-0 fixed dark:opacity-10 opacity-30 transform rotate-${rotation}`}
+      className={`-z-10 fixed dark:opacity-10 opacity-30 transform rotate-${rotation}`}
     >
       {renderShape()}
     </div>

@@ -1,0 +1,4 @@
+.blur {
+    background-color: rgba(76, 175, 80, 0.4); /* Adjust the color and opacity as needed */
+    filter: blur(10px); /* Adjust the blur intensity as needed */
+  }
