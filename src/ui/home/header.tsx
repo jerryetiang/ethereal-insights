@@ -103,14 +103,14 @@ export default function Header() {
                 height={400}
               />
             </div>
-            <div className="lg:max-w-xl lg:pr-5 relative z-10">
-              <p className=" flex text-sm uppercase text-g1 text-lime-600">
-                Explore
+            <div className="lg:w-xl lg:pr-5 relative z-10">
+              <p className=" flex text-sm uppercase text-lime-600">
+                Explore Your
               </p>
-              <h2 className=" mb-6 text-9xl font-black leading-snug tracking-tight text-g1 sm:text-5xl sm:leading-snug text-zinc-800 dark:text-zinc-300">
-                Thought provoking
+              <h2 className=" mb-6 text-9xl font-black leading-snug tracking-tight sm:text-5xl sm:leading-snug text-zinc-800 dark:text-zinc-300">
+                Deeper Mind
                 <span className="my-1 inline-block text-lime-600 border-b-8 border-g4 bg-white dark:bg-black font-bold text-g4 animate__animated animate__flash theme-transition">
-                  Musings
+                  Interactions
                 </span>
               </h2>
               <p className=" text-base text-zinc-700 dark:text-zinc-400 theme-transition">
@@ -122,7 +122,7 @@ export default function Header() {
               </p>
               <p className="mt-4 text-base text-zinc-700 dark:text-zinc-400 theme-transition">
                 Ultimately, we aspire to spark reflections that linger, leaving
-                an indelible mark on the canvas of your intellectual curiosity.
+                an indelible mark on the canvas of your deeper mind.
               </p>
               <div className="z-10 mt-10 flex flex-col items-center md:flex-row">
                 <Button
@@ -187,6 +187,7 @@ export default function Header() {
       <div className="hidden text-9xl varien absolute top-6 left-1/4 text-g/10 z-10">
         Explore
       </div>
+      <Background />
     </div>
   );
 }
