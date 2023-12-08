@@ -41,7 +41,7 @@ const insights = [
 // Your component code
 export default function ProductPage() {
   return (
-    <div className="z-10 container md:p-16 sm:p-4 mx-auto my-8 mt-4 grid grid-cols-1 md:grid-cols-2 gap-8 dark:bg-black bg-white theme-transition">
+    <div className="container md:p-16 sm:p-4 mx-auto my-8 mt-4 grid grid-cols-1 md:grid-cols-2 gap-8 theme-transition">
       {/* Column - Product Description */}
       <div className="p-2">
         <section className="p-4">

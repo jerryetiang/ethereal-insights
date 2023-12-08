@@ -3,10 +3,10 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "flowbite-react";
-import BGShape from "@/ui/home/BGShape";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTheme } from "next-themes";
+import Background from "../background";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -73,7 +73,7 @@ export default function Header() {
   };
 
   return (
-    <div className="-mt-24 dark:bg-black dark:text-light bg-white relative flex items-center justify-center overflow-hidden theme-transition h-screen mx-auto animate__animated animate__fadeIn">
+    <div className="-mt-24 relative flex items-center justify-center overflow-hidden theme-transition h-screen mx-auto animate__animated animate__fadeIn">
       {/* Loader content */}
       {isLoading && (
         <div
@@ -90,11 +90,11 @@ export default function Header() {
       )}
       <div
         ref={headerRef}
-        className="opacity-0 z-10 relative mx-auto h-screen px-4 pb-20 md:pb-10 sm:max-w-xl md:max-w-full md:px-24 lg:max-w-screen-xl lg:px-8 flex flex-col items-center justify-center animate__animated animate__fadeIn"
+        className="opacity-0 relative mx-auto h-screen px-4 pb-20 md:pb-10 sm:max-w-xl md:max-w-full md:px-24 lg:max-w-screen-xl lg:px-8 flex flex-col items-center justify-center animate__animated animate__fadeIn"
       >
         <div className="flex flex-col items-center justify-between lg:flex-row py-16">
           <div className="scale-0 opacity-0 relative mt-4" ref={textRef}>
-            <div className="z-10 absolute top-0 -left-48">
+            <div className="absolute top-0 -left-48">
               <Image
                 src="/palm-tree.png"
                 className="w-36 h-full object-fill fill-y text-y"
