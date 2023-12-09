@@ -75,7 +75,7 @@ export default function Hero() {
   const logoSrc = isDarkTheme ? "/logo/dark.svg" : "/logo/light.svg";
 
   return (
-    <div className="-mt-24 relative flex items-center justify-center theme-transition h-screen mx-auto">
+    <div className="lg:-mt-24 md:mt-16 relative flex items-center justify-center theme-transition h-screen mx-auto">
       {/* Loader content */}
       {isLoading && (
         <div
@@ -91,27 +91,27 @@ export default function Hero() {
         </div>
       )}
 
-      <div className="z-10 grid grid-cols-1 md:grid-cols-2 gap-10 p-24 lg:w-xl lg:pr-5 relative">
+      <div className="z-10 grid grid-cols-1 md:grid-cols-2 gap-10 relative">
         {/* Text Column */}
         <div className="relative" ref={textColumnRef}>
-          <p ref={leadingRef} className="flex text-lg uppercase text-lime-400">
+          <p ref={leadingRef} className="flex text-lg text-center sm:text-left  uppercase text-lime-400">
             The Wisdom of
           </p>
           <h2
             ref={h2Ref}
-            className="uppercase mb-6 text-9xl font-black tracking-tight text-zinc-700 dark:text-zinc-300"
+            className="uppercase mb-6 text-center sm:text-left text-6xl lg:text-9xl font-black tracking-tight text-zinc-700 dark:text-zinc-300"
           >
             Deep Mind
             <span
               ref={h2emphasisRef}
-              className="my-1 text-8xl inline-block text-lime-400 border-b-8 font-bold theme-transition"
+              className="my-1 text-center sm:text-left lg:text-8xl text-5xl inline-block text-lime-400 border-b-8 font-bold theme-transition"
             >
               Interactions
             </span>
           </h2>
           <p
             ref={p1Ref}
-            className="text-base text-justify font-medium text-zinc-600 dark:text-zinc-400 theme-transition"
+            className="text-center sm:text-justify text-sm md:text-base font-medium text-zinc-600 dark:text-zinc-400 theme-transition"
           >
             Step into the enigmatic expanse of Ethereal Insights, where the
             tapestry of knowledge is woven with threads of profound curiosity
@@ -121,7 +121,7 @@ export default function Hero() {
           </p>
           <p
             ref={p2Ref}
-            className="mt-4 text-base text-justify font-medium text-zinc-600 dark:text-zinc-400 theme-transition"
+            className="text-center sm:text-justify mt-4 text-sm md:text-base font-medium text-zinc-600 dark:text-zinc-400 theme-transition"
           >
             Ultimately, we aspire to spark reflections that linger, leaving an
             indelible mark on the canvas of your deeper mind.

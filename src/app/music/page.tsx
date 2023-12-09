@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Music() {
   return (
-    <div className="px-4 md:px-24">
+    <div>
       <HeroSection
         title="MUSIC"
         subtitle="Discover the stories behind the rhythmic melodies that transcends boundaries and let the language of music resonate within your soul."

@@ -2,9 +2,6 @@
 
 import React, { useState } from "react";
 import PostCard from "./postCard";
-
-
-
 interface PostGridProps {
   data: Array<{
     backgroundImage: string;
@@ -13,35 +10,29 @@ interface PostGridProps {
     publishDate: string;
     description: string;
   }>;
-  gridConfigs: Array<string>;
 }
 
-const PostGrid: React.FC<PostGridProps> = ({ data, gridConfigs }) => {
-  const maxPostsToShow = 8;
+const classes = [
+  "col-span-1 sm:col-span-2",
+  "col-span-1 sm:col-span-1",
+  "col-span-1 sm:col-span-1",
+  "col-span-1 sm:col-span-2",
+];
 
+const PostGrid: React.FC<PostGridProps> = ({ data }) => {
   return (
-    <div>
-      {gridConfigs.map(
-        (columnWidths, index) => (
-          <div
-            className="grid gap-4"
-            key={index}
-            style={{ gridTemplateColumns: index % 3 === 0 ? "2fr 2fr" : "2fr 1fr" }}
-          >
-            {data.slice(index * maxPostsToShow, (index + 1) * maxPostsToShow).map((post, postIndex) => (
-              <div key={postIndex}>
-                <PostCard
-                  backgroundImage={post.backgroundImage}
-                  postTitle={post.postTitle}
-                  author={post.author}
-                  publishDate={post.publishDate}
-                  description={post.description}
-                />
-              </div>
-            ))}
-          </div>
-        )
-      )}
+    <div className="grid sm:grid-cols-3 grid-cols-1 grid-flow-auto gap-4">
+      {data.map((post, postIndex) => (
+        <div key={postIndex} className={classes[postIndex % classes.length]}>
+          <PostCard
+            backgroundImage={post.backgroundImage}
+            postTitle={post.postTitle}
+            author={post.author}
+            publishDate={post.publishDate}
+            description={post.description}
+          />
+        </div>
+      ))}
     </div>
   );
 };

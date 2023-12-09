@@ -31,9 +31,9 @@ export default function NavigationBar() {
 
   return (
     <div className="fixed top-0 w-full z-50">
-      <nav className="relative px-4 py-4 flex justify-between items-center bg-white text-zinc-700 dark:bg-black dark:text-white theme-transition">
+      <nav className="relative px-4 py-4 flex justify-between items-center bg-white dark:bg-black theme-transition">
         <Link
-          className="text-3xl font-bold leading-none text-zinc-700 dark:text-zinc-300 theme-transition"
+          className="theme-transition"
           href="/"
         >
           <Image
