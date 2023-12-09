@@ -35,25 +35,24 @@ const PostCard: React.FC<PostCardProps> = ({
 
   return (
     <div
-      className={`my-2 z-10 h-80 rounded-lg p-8 relative overflow-hidden`}
+      className={`my-2 z-10 h-80 rounded-lg p-8 relative overflow-hidden hover:cursor-pointer`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       <div
-        className={`absolute inset-0 transition-all duration-300 ${
-          isHovered && styles.blur
-        }`}
+        className={`absolute inset-0 transition-all duration-300 bg-zinc-100 dark:bg-zinc-900 ${isHovered && 'blur-sm scale-125'}`}
         style={cardStyle}
       ></div>
-      <div className="relative  dark:bg-black bg-white opacity-70 p-4 rounded-md min-h-full z-10 text-white">
+
+      <div className="relative  dark:bg-black bg-white opacity-70 p-4 rounded-md min-h-full z-10 shadow-lg shadow-black">
         <h2 className="text-3xl font-bold mb-2 text-zinc-800 dark:text-zinc-300">
           {postTitle}
         </h2>
         <p className="text-sm font-light dark:text-zinc-300 text-zinc-700">
-          Author: {author}
+          <span className="text-lime-400">Author:</span>{author}
         </p>
         <p className="text-sm font-light dark:text-zinc-300 text-zinc-700">
-          Published on: {publishDate}
+          <span className="text-lime-400">Published on:</span> {publishDate}
         </p>
         <p className="text-sm font-regular dark:text-zinc-100 text-zinc-800 mt-4">
           {description}

@@ -9,13 +9,13 @@ export default function Technology() {
 
   return (
     <>
-      <div className="px-4 md:px-24">
+      <div>
         <HeroSection
           title="TECHNOLOGY"
           subtitle="Explore the intersection of science and creativity, where transformative ideas become reality."
         />
         <div className="mt-2">
-          <PostGrid data={postCardData} gridConfigs={gridConfigs} />
+          <PostGrid data={postCardData} />
         </div>
       </div>
     </>

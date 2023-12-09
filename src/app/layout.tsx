@@ -26,11 +26,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.className} bg-white dark:bg-black theme-transition`}
+        className={`${poppins.className} bg-white dark:bg-black theme-transition scroll-smooth`}
       >
         <Provider>
           <NavigationBar />
-          <main className="mt-20 p-2 min-h-screen">{children}</main>
+          <main className="mt-20 px-4 sm:px-8 md:px-16 lg:px-24 min-h-screen">{children}</main>
           <Analytics />
           <section id="footer">
             <FooterSection />
