@@ -25,7 +25,7 @@ export default function FooterSection() {
   };
 
   return (
-    <Footer container className='opacity-90 bg-zinc-100 dark:bg-zinc-900 theme-transition'>
+    <Footer container className='bg-white dark:bg-black theme-transition'>
       <div className="w-full text-center">
         <div className="w-full justify-between sm:flex sm:items-center sm:justify-between">
         <Footer.Brand

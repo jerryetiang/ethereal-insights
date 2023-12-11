@@ -5,8 +5,6 @@ import PostGrid from "@/ui/post/postGrid";
 import postCardData from "./data";
 
 export default function Technology() {
-  const gridConfigs = ["2fr 1fr", "1fr 2fr"];
-
   return (
     <>
       <div>
