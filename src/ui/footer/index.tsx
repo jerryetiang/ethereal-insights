@@ -29,14 +29,13 @@ export default function FooterSection() {
       <div className="w-full text-center">
         <div className="w-full justify-between sm:flex sm:items-center sm:justify-between">
         <Footer.Brand
-            href="/"
             src={logoSrc}
             alt="Ethereal Insights Logo"
           />
 
-          <Footer.LinkGroup className="space-x-6 animate__animated animate__fadeIn" >
+          <Footer.LinkGroup className="space-x-4 animate__animated animate__fadeIn" >
           {navLinks.map((link) => (
-            <NavbarLink key={link.id} link={link} />
+            <Footer.Link key={link.id} as={Link} href={link.url}>{link.title}</Footer.Link>
           ))}
           </Footer.LinkGroup>
         </div>
