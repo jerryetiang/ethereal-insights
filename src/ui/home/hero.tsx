@@ -1,13 +1,10 @@
 "use client";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "flowbite-react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTheme } from "next-themes";
-import CircleDecoration from "../components/limeCirclesBackground";
-import Background from "../background";
 
 export default function Hero() {
   const meditatingWomanRef = useRef(null);
@@ -33,14 +30,6 @@ export default function Hero() {
     // // Fade in loader
     tl.to(loaderRef.current, { opacity: 1, duration: 0.5 });
     tl.to(loaderRef.current, { opacity: 0, duration: 1 }, "+=0.5"); // Fade out loader 0.5s after it fades in
-
-    // Remove this block and animate leadingRef, h2Ref, h2emphasisRef, p1Ref, p2Ref, callButtonRef, callToaActionRef, with a stagger effect
-    // tl.fromTo(
-    //   Object.values(textColumnRef),
-    //   { scale: 0, opacity: 0, y: "+=20" },
-    //   { scale: 1, opacity: 1, y: 0, stagger: 0.2, duration: 1 },
-    //   "+=0.1" // Start the text animation 0.1s before the loader fades out
-    // );
 
     tl.fromTo(
       meditatingWomanRef.current,
