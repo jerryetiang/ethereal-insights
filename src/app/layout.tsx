@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import "animate.css";
-import Provider from "@/utils/provider";
+import CustomThemeProvider from "@/utils/customThemeProvider";
 import NavigationBar from "@/ui/navbar";
 import { Analytics } from "@vercel/analytics/react";
 import FooterSection from "@/ui/footer";
@@ -28,7 +28,7 @@ export default function RootLayout({
       <body
         className={`${poppins.className} bg-white dark:bg-black theme-transition scroll-smooth`}
       >
-        <Provider>
+        <CustomThemeProvider>
           <NavigationBar />
           <main className="mt-20 px-4 sm:px-8 md:px-16 lg:px-24 min-h-screen">{children}</main>
           <Analytics />
@@ -36,7 +36,7 @@ export default function RootLayout({
             <FooterSection />
           </section>
           <Background />
-        </Provider>
+        </CustomThemeProvider>
       </body>
     </html>
   );

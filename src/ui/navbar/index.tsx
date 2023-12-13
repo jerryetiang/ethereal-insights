@@ -25,7 +25,7 @@ export default function NavigationBar() {
   return (
     <div className="fixed top-0 w-full z-50">
       <Navbar fluid rounded className={"dark:bg-black theme-transition"}>
-        <Navbar.Brand as={Link} href="/">
+        <Navbar.Brand as={Link} href="/" className="p-2">
           <img src={logoSrc} className="mr-3 h-6 sm:h-9" alt="Ethereal Insights Logo" />
 
         </Navbar.Brand>
