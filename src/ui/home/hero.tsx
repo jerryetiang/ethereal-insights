@@ -1,10 +1,9 @@
 "use client";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "flowbite-react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTheme } from "next-themes";
 
 export default function Hero() {
@@ -33,28 +32,36 @@ export default function Hero() {
     tl.to(loaderRef.current, { opacity: 0, duration: 1 }, "+=0.5"); // Fade out loader 0.5s after it fades in
 
     tl.fromTo(
-      Object.values(textColumnRef),
-      { scale: 0, opacity: 0, y: "+=20" },
-      { scale: 1, opacity: 1, y: 0, stagger: 0.2, duration: 1 },
-      "+=0.1" // Start the text animation 0.25s before the loader fades out
-    );
-
-    tl.fromTo(
       meditatingWomanRef.current,
       { scale: 0, opacity: 0 },
       { scale: 1, opacity: 1, duration: 2 },
-      "-=1" // Start the woman meditating animation 1 second before the text animation ends
+      "+=0.5" // Start the woman meditating animation 1 second before the text animation ends
+    );
+
+    tl.fromTo(
+      [
+        leadingRef.current,
+        h2Ref.current,
+        h2emphasisRef.current,
+        p1Ref.current,
+        p2Ref.current,
+        callButtonRef.current,
+        callToaActionRef.current,
+      ],
+      { opacity: 0, scale: 0, y: "+=20" },
+      { opacity: 1, scale: 1, y: 0, stagger: 0.2, duration: 1 },
+      "-=1.5" // Start the text animation 0.1s before the loader fades out
     );
 
     // Optional: Add more animations to tl as needed
 
     // You can adjust the options and add more animations as needed
-    // tl.to(meditatingWomanRef.current, {
-    //   x: "+=50",
-    //   duration: 2,
-    //   yoyo: true,
-    //   repeat: -1,
-    // });
+    tl.to(meditatingWomanRef.current, {
+      scale: .95,
+      duration: 3,
+      yoyo: true,
+      repeat: -1,
+    });
 
     tl.eventCallback("onComplete", () => {
       setIsLoading(false);
@@ -91,27 +98,27 @@ export default function Hero() {
         </div>
       )}
 
-      <div className="z-10 grid grid-cols-1 md:grid-cols-2 gap-10 relative">
+      <div className="z-10 grid grid-cols-1 md:grid-cols-2 gap-10 relative scale-90">
         {/* Text Column */}
         <div className="relative" ref={textColumnRef}>
-          <p ref={leadingRef} className="flex text-lg text-center sm:text-left  uppercase text-lime-400">
-            The Wisdom of
+          <p ref={leadingRef} className="opacity-0 scale-0 flex text-lg text-center sm:text-left  uppercase text-lime-400">
+            The Mystery of
           </p>
           <h2
             ref={h2Ref}
-            className="uppercase mb-6 text-center sm:text-left text-6xl lg:text-9xl font-black tracking-tight text-zinc-700 dark:text-zinc-300"
+            className="opacity-0 scale-0 uppercase mb-6 text-center sm:text-left text-6xl lg:text-9xl font-black tracking-tight text-zinc-700 dark:text-zinc-300"
           >
             Deep Mind
             <span
               ref={h2emphasisRef}
-              className="my-1 text-center sm:text-left lg:text-8xl text-5xl inline-block text-lime-400 border-b-8 font-bold theme-transition"
+              className="opacity-0 scale-0 text-center sm:text-left lg:text-8xl text-5xl inline-block text-lime-400 border-b-8 font-bold theme-transition"
             >
               Interactions
             </span>
           </h2>
           <p
             ref={p1Ref}
-            className="text-center sm:text-justify text-sm md:text-base font-medium text-zinc-600 dark:text-zinc-400 theme-transition"
+            className="opacity-0 scale-0 text-center sm:text-justify text-sm md:text-base font-medium text-zinc-600 dark:text-zinc-400 theme-transition"
           >
             Step into the enigmatic expanse of Ethereal Insights, where the
             tapestry of knowledge is woven with threads of profound curiosity
@@ -121,7 +128,7 @@ export default function Hero() {
           </p>
           <p
             ref={p2Ref}
-            className="text-center sm:text-justify mt-4 text-sm md:text-base font-medium text-zinc-600 dark:text-zinc-400 theme-transition"
+            className="opacity-0 scale-0 text-center sm:text-justify mt-4 text-sm md:text-base font-medium text-zinc-600 dark:text-zinc-400 theme-transition"
           >
             Ultimately, we aspire to spark reflections that linger, leaving an
             indelible mark on the canvas of your deeper mind.
@@ -130,7 +137,7 @@ export default function Hero() {
             <Button
               ref={callButtonRef}
               color="dark"
-              className="md:mr-4 text-lime-400 bg-zinc-800 enabled:hover:bg-zinc-900 focus:ring-zinc-300 dark:bg-zinc-800 dark:enabled:hover:bg-zinc-700 dark:focus:ring-zinc-800 dark:border-zinc-700 theme-transition"
+              className="opacity-0 scale-0 md:mr-4 text-lime-400 bg-zinc-800 enabled:hover:bg-zinc-900 focus:ring-zinc-300 dark:bg-zinc-800 dark:enabled:hover:bg-zinc-700 dark:focus:ring-zinc-800 dark:border-zinc-700 theme-transition"
             >
               Learn More
             </Button>
@@ -138,7 +145,7 @@ export default function Hero() {
               ref={callToaActionRef}
               href="/"
               aria-label="join"
-              className="group inline-flex items-center font-semibold text-g1 text-lime-400"
+              className="opacity-0 scale-0 group inline-flex items-center font-semibold text-g1 text-lime-400"
             >
               Join the conversation
               <svg
@@ -171,6 +178,7 @@ export default function Hero() {
             height={600}
           />
         </div>
+        
       </div>
     </div>
   );

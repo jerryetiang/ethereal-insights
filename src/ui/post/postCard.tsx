@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import styles from "./PostCard.module.css";
 
 interface PostCardProps {
   backgroundImage: string;
@@ -35,7 +34,7 @@ const PostCard: React.FC<PostCardProps> = ({
 
   return (
     <div
-      className={`my-2 z-10 h-80 rounded-lg p-8 relative overflow-hidden hover:cursor-pointer`}
+      className={`my-2 z-10 h-96 rounded-lg p-8 relative overflow-hidden hover:cursor-pointer`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -44,7 +43,7 @@ const PostCard: React.FC<PostCardProps> = ({
         style={cardStyle}
       ></div>
 
-      <div className="relative  dark:bg-black bg-white opacity-70 p-4 rounded-md min-h-full z-10 shadow-lg shadow-black">
+      <div className="relative  dark:bg-black bg-white opacity-70 p-4 rounded-md min-h-full z-10 shadow-sm">
         <h2 className="text-3xl font-bold mb-2 text-zinc-800 dark:text-zinc-300">
           {postTitle}
         </h2>

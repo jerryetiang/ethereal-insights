@@ -34,11 +34,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({ title, subtitle }) => {
   return (
     <section className="z-10 sm:py-16">
       <h1
-        className="z-10 text-center sm:text-left font-black text-5xl sm:text-7xl md:text-9xl text-zinc-700 dark:text-zinc-300 theme-transition"
+        className="z-10 text-center font-black text-5xl sm:text-7xl md:text-9xl text-zinc-700 dark:text-zinc-300 theme-transition"
         dangerouslySetInnerHTML={{ __html: coloredTitle }}
       />
       <p
-        className="z-10 mt-4 text-center sm:text-left text-lg sm:text-2xl md:text-4xl font-bold text-zinc-600 dark:text-zinc-200"
+        className="z-10 mt-4 text-center text-lg sm:text-2xl md:text-4xl font-bold text-zinc-600 dark:text-zinc-200"
         dangerouslySetInnerHTML={{ __html: coloredSubtitle }}
       />
     </section>
