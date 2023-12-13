@@ -6,6 +6,6 @@ interface MainContentProps {
 
 export const MainContent: React.FC<MainContentProps> = ({children}) => {
   return (
-    <div>{children}</div>
+    <div className='p-4 bg-zinc-100 dark:bg-zinc-900 rounded-lg w-full'>{children}</div>
   )
 }

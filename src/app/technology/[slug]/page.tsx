@@ -1,5 +1,6 @@
 // SinglePostPage.jsx
 import DiscussionSection from '@/ui/discussion/discussion';
+import RelatedPostsComponent from '@/ui/post/relatedPosts';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -68,27 +69,16 @@ const SinglePostPage = ({ }) => {
         {/* Right column */}
         <section className={`w-full lg:w-1/3 p-4`}>
           <DiscussionSection />
-         
-            {/* Related Posts Section */}
-            <div className="mt-8 p-4">
-              <h2 className="text-2xl text-zinc-700 dark:text-zinc-300 font-semibold mb-4">Related Posts</h2>
-              <ul className="list-none">
-                <li><Link href="/1"><span className="text-zinc-600 dark:text-zinc-400">Related Post 1</span ></Link></li>
-                <li><Link href="/2"><span className="text-zinc-600 dark:text-zinc-400">Related Post 2</span ></Link></li>
-                <li><Link href="/"><span className="text-zinc-600 dark:text-zinc-400">Related Post 3</span ></Link></li>
-              </ul>
-            </div>
 
-            {/* Categories Section */}
-            <div className="mt-8 p-4">
-              <h2 className="text-2xl text-zinc-700 dark:text-zinc-300 font-semibold mb-4">Categories</h2>
-              <ul className="list-disc pl-4">
-                <li><Link href="/category/development"><span className="text-zinc-600 dark:text-zinc-400">Development</span ></Link></li>
-                <li><Link href="/category/react"><span className="text-zinc-600 dark:text-zinc-400">React</span ></Link></li>
-                {/* Add more categories as needed */}
-              </ul>
-            </div>
-          </section>
+          {/* Related Posts Section */}
+          <div className="mt-8 p-4">
+            <h2 className="text-2xl text-zinc-700 dark:text-zinc-300 font-semibold mb-4">Related Posts</h2>
+            <RelatedPostsComponent />
+            <RelatedPostsComponent />
+
+          </div>
+
+        </section>
       </div>
     </div>
   );
