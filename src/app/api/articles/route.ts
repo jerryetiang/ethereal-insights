@@ -1,15 +1,18 @@
+// route.ts
+
 import { NextResponse } from "next/server";
-import { NextApiRequest } from "next";
+import { NextApiRequest, NextApiResponse } from "next";
 import connect from "@/utils/db";
 import ArticleModel from "@/models/articleModel";
 
-export const GET = async (request: NextApiRequest) => {
+// Export a named function for the GET method
+export const GET = async (request: NextApiRequest, response: NextApiResponse) => {
   try {
     await connect();
     const articles = await ArticleModel.find();
-    const usersJSON = JSON.stringify(articles);
+    const articlesJSON = JSON.stringify(articles);
 
-    return new NextResponse(usersJSON, {
+    return new NextResponse(articlesJSON, {
       status: 200,
       headers: {
         "Content-Type": "application/json",
@@ -20,3 +23,8 @@ export const GET = async (request: NextApiRequest) => {
     return new NextResponse("Database Error", { status: 500 });
   }
 };
+
+// Optionally, you can export other methods like POST, PUT, etc.
+// export const post = async (request: NextApiRequest, response: NextApiResponse) => {
+//   // ...
+// };
