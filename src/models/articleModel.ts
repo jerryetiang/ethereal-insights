@@ -100,6 +100,6 @@ const articleSchema = new Schema<ArticleDocument>({
   },
 });
 
-const Article = mongoose.model<ArticleDocument>('Article', articleSchema);
+const ArticleModel = mongoose.model<ArticleDocument>('Article', articleSchema);
 
-export default Article;
+export default ArticleModel;
