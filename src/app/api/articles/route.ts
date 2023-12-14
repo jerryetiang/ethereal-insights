@@ -1,12 +1,11 @@
 // route.ts
 
 import { NextResponse } from "next/server";
-import { NextApiRequest, NextApiResponse } from "next";
 import connect from "@/utils/db";
 import ArticleModel from "@/models/articleModel";
 
 // Export a named function for the GET method
-export const GET = async (request: NextApiRequest, response: NextApiResponse) => {
+export const GET = async () => {
   try {
     await connect();
     const articles = await ArticleModel.find();
