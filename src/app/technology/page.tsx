@@ -4,7 +4,7 @@ import PostGrid from "@/ui/post/postGrid";
 import postCardData from "./data";
 
 async function getData() {
-  const res = await fetch('https://jsonplaceholder.typicode.com/posts', { next: { revalidate: 3600 } })
+  const res = await fetch('http://localhost:3000/api/posts', { next: { revalidate: 3600 } })
  
   if (!res.ok) {
     throw new Error('Failed to fetch data')

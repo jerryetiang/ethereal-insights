@@ -1,3 +1,4 @@
+import Categories from "@/ui/categories";
 import FeaturedPosts from "@/ui/featured/featuredPosts";
 import Hero from "@/ui/home/hero";
 import Journal from "@/ui/journal";
@@ -7,10 +8,13 @@ export default function Page() {
   return (
     <div>
       <section id="Header">
-        {/* <Header /> */}
         <Hero />
       </section>
-      {/* <section id="featuredPosts">
+
+      {/* <section>
+        <Categories />
+      </section>
+      <section id="featuredPosts">
         <FeaturedPosts />
       </section>
       <section id="journal">

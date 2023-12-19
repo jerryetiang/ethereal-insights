@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@prisma/client": "^5.7.1",
     "@vercel/analytics": "^1.1.1",
     "animate.css": "^4.1.1",
     "clsx": "^2.0.0",
@@ -20,6 +21,7 @@
     "next": "^14.0.4",
     "next-auth": "^4.24.5",
     "next-themes": "^0.2.1",
+    "prisma": "^5.7.1",
     "react": "^18",
     "react-dom": "^18",
     "scrollmagic": "^2.0.8"

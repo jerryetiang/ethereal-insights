@@ -1,26 +1,15 @@
-import mongoose from 'mongoose';
+import { PrismaClient } from '@prisma/client'
 
-const connect = async () => {
-  try {
-    const mongoUri = process.env.MONGO;
+const prismaClientSingleton = () => {
+  return new PrismaClient()
+}
 
-    if (!mongoUri) {
-      throw new Error("MongoDB connection string is not defined.");
-    }
+declare global {
+  var prisma: undefined | ReturnType<typeof prismaClientSingleton>
+}
 
-    await mongoose.connect(mongoUri);
-    console.log("Connected to MongoDB!");
-    
-  } catch (error: unknown) {
-    if (error instanceof Error) {
-      console.error("Connection failed:", error.message);
-      console.error("Full error object:", error);
-      throw new Error("Connection failed");
-    } else {
-      console.error("An unknown error occurred:", error);
-      throw new Error("Connection failed");
-    }
-  }
-};
+const prisma = globalThis.prisma ?? prismaClientSingleton()
 
-export default connect;
+export default prisma
+
+if (process.env.NODE_ENV !== 'production') globalThis.prisma = prisma
