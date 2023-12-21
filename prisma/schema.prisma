@@ -57,15 +57,17 @@ model VerificationToken {
 }
 
 model Post {
-  id        String    @id @default(auto()) @map("_id") @db.ObjectId
-  slug      String    @unique
-  title     String
-  body      String
-  image     String?
-  author    User      @relation(fields: [authorId], references: [id])
-  authorId  String
-  comments  Comment[]
-  createdAt DateTime  @default(now())
+  id         String    @id @default(auto()) @map("_id") @db.ObjectId
+  slug       String    @unique
+  title      String
+  body       String
+  image      String?
+  author     User      @relation(fields: [authorId], references: [id])
+  authorId   String
+  comments   Comment[]
+  createdAt  DateTime  @default(now())
+  Category   Category? @relation(fields: [categoryId], references: [id])
+  categoryId String?   @db.ObjectId
 }
 
 model Comment {
@@ -76,6 +78,20 @@ model Comment {
   post      Post     @relation(fields: [postSlug], references: [slug])
   postSlug  String
   createdAt DateTime @default(now())
+}
+
+model Category {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  title    String
+  subTitle String
+  posts    Post[]
+}
+
+model NavigationBarLink {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  title String
+  url   String
+  )
 }
 
 // Address is an embedded document
