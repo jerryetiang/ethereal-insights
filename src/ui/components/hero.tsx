@@ -34,7 +34,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ title, subtitle }) => {
   return (
     <section className="z-10 sm:py-16">
       <h1
-        className="z-10 text-center font-black text-5xl sm:text-7xl md:text-9xl text-zinc-700 dark:text-zinc-300 theme-transition"
+        className="z-10 uppercase text-center font-black text-5xl sm:text-7xl md:text-9xl text-zinc-700 dark:text-zinc-300 theme-transition"
         dangerouslySetInnerHTML={{ __html: coloredTitle }}
       />
       <p

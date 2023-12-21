@@ -14,9 +14,11 @@ interface CommentProps {
 }
 
 const DiscussionSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
-  // State for managing comments and new comments
+  // State for managing comments, new comments, and pagination
   const [postComments, setPostComments] = useState<CommentProps[]>([]);
   const [newComment, setNewComment] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const commentsPerPage = 2;
 
   // Fetch comments based on postSlug
   const fetchComments = async () => {
@@ -38,6 +40,11 @@ const DiscussionSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
     fetchComments();
   }, [postSlug]);
 
+  // Get current comments based on pagination
+  const indexOfLastComment = currentPage * commentsPerPage;
+  const indexOfFirstComment = indexOfLastComment - commentsPerPage;
+  const currentComments = postComments.slice(indexOfFirstComment, indexOfLastComment);
+
   // Function to handle comment submission
   const handleCommentSubmit = async () => {
     try {
@@ -58,6 +65,8 @@ const DiscussionSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
         fetchComments();
         // Reset the form by clearing the newComment state
         setNewComment('');
+        // Reset to the last page after submitting a new comment
+        setCurrentPage(Math.ceil(postComments.length / commentsPerPage));
       } else {
         console.error('Error posting comment:', response.statusText);
       }
@@ -66,11 +75,19 @@ const DiscussionSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
     }
   };
 
+  // Function to handle page navigation
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
+
   return (
     <section className="antialiased mb-4">
       <div className="max-w-2xl mx-auto px-4">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-lg lg:text-2xl font-bold text-zinc-700 dark:text-zinc-300">Discussion (20)</h2>
+        <h2 className="text-lg lg:text-2xl font-bold text-zinc-700 dark:text-zinc-300">
+            Discussion ({postComments.length})
+          </h2>
         </div>
         <form className="mb-6">
           {/* Your comment input and button */}
@@ -98,10 +115,31 @@ const DiscussionSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
           </Button>
         </form>
 
-        {/* Render comments */}
-        {postComments.map((comment) => (
+       {/* Render comments for the current page */}
+       {currentComments.map((comment) => (
           <Comment postSlug={postSlug} key={comment.id} {...comment} />
         ))}
+        {/* Pagination controls */}
+        <div className="flex justify-center gap-4 items-center mt-4">
+          <Button
+            size="xs"
+            color="dark"
+            className="p-2 text-lime-400 bg-zinc-800 enabled:hover:bg-zinc-900 focus:ring-zinc-300 dark:bg-zinc-800 dark:enabled:hover:bg-zinc-700 dark:focus:ring-zinc-800 dark:border-zinc-700 theme-transition"
+            disabled={currentPage === 1}
+            onClick={() => handlePageChange(currentPage - 1)}
+          >
+            Previous
+          </Button>
+          <Button
+            size="xs"
+            color="dark"
+            className="p-2 text-lime-400 bg-zinc-800 enabled:hover:bg-zinc-900 focus:ring-zinc-300 dark:bg-zinc-800 dark:enabled:hover:bg-zinc-700 dark:focus:ring-zinc-800 dark:border-zinc-700 theme-transition"
+            disabled={indexOfLastComment >= postComments.length}
+            onClick={() => handlePageChange(currentPage + 1)}
+          >
+            Next
+          </Button>
+        </div>
       </div>
     </section>
   );

@@ -1,16 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { navLinks } from "./data";
 import { Button, Navbar } from "flowbite-react";
 import ThemeSwitcher from "@/utils/themeSwitcher";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
+import Image from "next/image";
 
 export default function NavigationBar() {
   const [isMenuHidden, setIsMenuHidden] = useState(true);
-  const [isDarkTheme, setIsDarkTheme] = useState(true);
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
   const [logoSrc, setLogoSrc] = useState('/logo/dark.svg')
   const [isHovered, setIsHovered] = useState(false);
 
@@ -20,16 +21,22 @@ export default function NavigationBar() {
     setLogoSrc(isDark ? '/logo/dark.svg' : '/logo/light.svg');
   };
 
+  
+  useEffect(() => {
+    setLogoSrc(isDarkTheme ? '/logo/dark.svg' : '/logo/light.svg');
+  }, [handleThemeChange])
+  
+
   const pathname = usePathname();
 
   return (
     <div className="fixed top-0 w-full z-50">
       <Navbar fluid rounded className={"dark:bg-black theme-transition"}>
-        <Navbar.Brand as={Link} href="/" className="p-2">
-          <img src={logoSrc} className="mr-3 h-6 sm:h-9" alt="Ethereal Insights Logo" />
+        <Navbar.Brand as={Link} href="/" className="p-2 flex-1">
+          <Image src={logoSrc} className="mr-3 h-6 sm:h-9" alt="Ethereal Insights Logo" width={300} height={100}/>
 
         </Navbar.Brand>
-        <div className="flex md:order-2">
+        <div className="flex flex-1 md:order-2">
           <span className="lg:ml-auto lg:mr-3 py-2 px-6 rounded-md transition duration-200">
             <ThemeSwitcher
               onThemeChange={(isDark: boolean) => handleThemeChange(isDark)}

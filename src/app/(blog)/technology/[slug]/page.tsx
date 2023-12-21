@@ -86,7 +86,7 @@ const SinglePostPage = async ({ params }: { params: { slug: string } }) => {
 
         {/* Right column */}
         <section className={`w-full lg:w-1/3 lg:p-4`}>
-          <DiscussionSection comments={post.comments || []} postSlug={slug} />
+          <DiscussionSection postSlug={slug} />
 
           {/* Related Posts Section */}
           <div className="mt-8 p-4">
