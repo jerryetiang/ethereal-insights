@@ -26,4 +26,4 @@ Do you believe in Magic: Logic and Sense!
 				`caligraphy`
 				`drum`	 
 			#inspire
-				With Chat+GPT, I have learned how to write better commit statements in my GitHub repositories.
+				With ChatGPT, I have learned how to write better commit statements in my GitHub repositories.

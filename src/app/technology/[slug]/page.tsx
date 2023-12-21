@@ -3,28 +3,21 @@ import RelatedPostsComponent from '@/ui/post/relatedPosts';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getApiUrl } from '@/utils/api';
 
 const getData = async (slug: string) => {
-  const baseUrl = getApiUrl();
-  const apiUrl = `${baseUrl}/api/posts/${slug}`;
-
-  try {
-    const res = await fetch(apiUrl);
-    if (!res.ok) {
-      throw new Error("Failed to fetch data");
-    }
-
-    return await res.json();
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    return null;
+  const res = await fetch(`http://localhost:3000/api/posts/${slug}`);
+  if (!res.ok) {
+    throw new Error("Failed");
   }
+
+  // Return the parsed JSON data
+  return await res.json();
 };
+
 
 const SinglePostPage = async ({ params }: { params: { slug: string } }) => {
   const { slug } = params
-
+ 
   const fetchData = async () => {
     try {
       const data = await getData(slug);
@@ -38,6 +31,7 @@ const SinglePostPage = async ({ params }: { params: { slug: string } }) => {
   };
 
   const data = await fetchData()
+
   if (!data) {
     return <div>Error fetching data</div>;
   }
@@ -70,14 +64,14 @@ const SinglePostPage = async ({ params }: { params: { slug: string } }) => {
             {/* Horizontal Divider */}
             <hr className="my-8 border-t border-zinc-300 dark:border-zinc-700" />
 
-            {/* Author Information */}
-            {post.author && (
-              <div className="mt-8">
-                <h2 className="text-2xl text-zinc-700 dark:text-zinc-300 font-semibold mb-2">About the Author</h2>
-                <p className="text-zinc-600 dark:text-zinc-400">{post.author.bio || 'No bio available'}</p>
-              </div>
-            )}
-          </article>
+              {/* Author Information */}
+          {post.author && (
+            <div className="mt-8">
+              <h2 className="text-2xl text-zinc-700 dark:text-zinc-300 font-semibold mb-2">About the Author</h2>
+              <p className="text-zinc-600 dark:text-zinc-400">{post.author.bio || 'No bio available'}</p>
+            </div>
+          )}
+        </article>
 
           {/* Post Navigation */}
           <div className="mt-8 flex justify-between">
@@ -91,8 +85,8 @@ const SinglePostPage = async ({ params }: { params: { slug: string } }) => {
         </section>
 
         {/* Right column */}
-        <section className={`w-full lg:w-1/3 p-4`}>
-          <DiscussionSection />
+        <section className={`w-full lg:w-1/3 lg:p-4`}>
+          <DiscussionSection comments={post.comments || []} postSlug={slug} />
 
           {/* Related Posts Section */}
           <div className="mt-8 p-4">

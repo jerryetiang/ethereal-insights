@@ -3,7 +3,7 @@ import HeroSection from "@/ui/components/hero";
 import PostGrid from "@/ui/post/postGrid";
 
 async function getData() {
-  const res = await fetch('http://localhost:3000/api/posts', { next: { revalidate: 3600 } })
+  const res = await fetch('http://localhost:3000/api/posts', { cache: "no-store" })
  
   if (!res.ok) {
     throw new Error('Failed to fetch data')

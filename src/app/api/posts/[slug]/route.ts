@@ -1,4 +1,4 @@
-import prisma from '@/utils/db'
+import prisma from '@/lib/db'
 import { NextResponse } from 'next/server'
 
 export const GET = async (req: any, { params }: any) => {
@@ -8,7 +8,14 @@ export const GET = async (req: any, { params }: any) => {
     try {
         const post = await prisma.post.findUnique({
             where: slug,
-            include: { author: true }
+            include: {
+                author: true, 
+                comments: {
+                    include: {
+                        author: true, // Include author details for each comment
+                    },
+                },
+            }
         })
         return new NextResponse(JSON.stringify(post), { status: 200 })
     } catch (error) {

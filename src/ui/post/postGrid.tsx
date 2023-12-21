@@ -8,9 +8,9 @@ interface PostGridProps {
   data: Array<{
     image: string;
     title: string;
-    author: string;
-    publishDate: string;
-    description: string;
+    author: {name: string};
+    createdAt: string;
+    body: string;
     slug: string;
   }>;
 }
@@ -31,9 +31,9 @@ const PostGrid: React.FC<PostGridProps> = ({ data }) => {
             <PostCard
               backgroundImage={post.image}
               postTitle={post.title}
-              author={post.author}
-              publishDate={post.publishDate}
-              description={post.description}
+              author={post.author.name}
+              publishDate={post.createdAt}
+              description={post.body}
             />
           </Link>
         </div>
