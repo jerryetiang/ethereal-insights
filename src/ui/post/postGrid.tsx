@@ -3,22 +3,15 @@
 import React, { useState } from "react";
 import PostCard from "./postCard";
 import Link from "next/link";
-// interface PostGridProps {
-//   data: Array<{
-//     backgroundImage: string;
-//     postTitle: string;
-//     author: string;
-//     publishDate: string;
-//     description: string;
-//     slug: string;
-//   }>;
-// }
 
 interface PostGridProps {
   data: Array<{
-    id: number;
+    image: string;
     title: string;
+    author: {name: string};
+    createdAt: string;
     body: string;
+    slug: string;
   }>;
 }
 
@@ -34,12 +27,12 @@ const PostGrid: React.FC<PostGridProps> = ({ data }) => {
     <div className="grid sm:grid-cols-3 grid-cols-1 grid-flow-auto gap-x-4 gap-y-1">
       {data.map((post, postIndex) => (
         <div key={postIndex} className={classes[postIndex % classes.length]}>
-          <Link href={`/technology/${post.id}`}>
+          <Link href={`/technology/${post.slug}`}>
             <PostCard
-              backgroundImage={"post.backgroundImage"}
+              backgroundImage={post.image}
               postTitle={post.title}
-              author={"J. R. E"}
-              publishDate={"today"}
+              author={post.author.name}
+              publishDate={post.createdAt}
               description={post.body}
             />
           </Link>

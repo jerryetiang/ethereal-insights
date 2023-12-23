@@ -1,27 +1,42 @@
-// SinglePostPage.jsx
 import DiscussionSection from '@/ui/discussion/discussion';
 import RelatedPostsComponent from '@/ui/post/relatedPosts';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const SinglePostPage = ({ }) => {
-  const post = {
-    title: 'Exploring the Wonders of Next.js',
-    author: 'TechExplorer',
-    createdAt: 'February 15, 2023',
-    content: `
-      <p>Welcome to a journey through the wonders of Next.js!</p>
-      <p>Next.js is a powerful React framework that simplifies the process of building modern web applications. With its robust features and ease of use, developers around the world are diving into the Next.js ecosystem to create fast, scalable, and maintainable applications.</p>
-      <!-- ... (more content) ... -->
-      <br />
-      <p>As we continue our exploration of Next.js, we'll delve into advanced topics, optimization techniques, and best practices. Buckle up for an exciting adventure in the world of web development!</p>
-    `,
-    comments: [
-      { text: 'Great post!', author: 'WebEnthusiast' },
-      { text: 'I learned a lot, thanks!', author: 'CodeExplorer' },
-    ],
+const getData = async (slug: string) => {
+  const res = await fetch(`${process.env.BASE_URL}/api/posts/${slug}`);
+  if (!res.ok) {
+    throw new Error("Failed");
+  }
+
+  // Return the parsed JSON data
+  return await res.json();
+};
+
+
+const SinglePostPage = async ({ params }: { params: { slug: string } }) => {
+  const { slug } = params
+ 
+  const fetchData = async () => {
+    try {
+      const data = await getData(slug);
+      // Use the fetched data instead of the static post
+      return data;
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      // Handle error or return a default value
+      return null;
+    }
   };
+
+  const data = await fetchData()
+
+  if (!data) {
+    return <div>Error fetching data</div>;
+  }
+
+  const post = data
 
   return (
     <div className={`mx-auto py-4`}>
@@ -35,25 +50,28 @@ const SinglePostPage = ({ }) => {
           <article className={`mb-8`}>
             <h1 className={`text-4xl font-bold mb-4 text-zinc-700 dark:text-zinc-300`}>{post.title}</h1>
             <p className={`text-zinc-600 dark:text-zinc-400 mb-4`}>
-              By {post.author} on {new Date(post.createdAt).toDateString()}
+              By {post.author?.name} on {new Date(post.createdAt).toDateString()}
             </p>
             <div className={`mb-4`}>
-              <Image alt='DNA structure' className={`object-cover w-full h-80 rounded-lg`} src={'/blog-samples/dna.png'} width={400} height={400} />
+              <Image alt={post.title} className={`object-cover w-full h-80 rounded-lg`} src={post.image} width={400} height={400} />
             </div>
             <div
               className={`leading-6 text-zinc-600 dark:text-zinc-400`}
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
+            >
+              {post.body}
+            </div>
 
             {/* Horizontal Divider */}
             <hr className="my-8 border-t border-zinc-300 dark:border-zinc-700" />
 
-            {/* Author Information */}
+              {/* Author Information */}
+          {post.author && (
             <div className="mt-8">
               <h2 className="text-2xl text-zinc-700 dark:text-zinc-300 font-semibold mb-2">About the Author</h2>
-              <p className="text-zinc-600 dark:text-zinc-400">TechExplorer is a passionate developer exploring the latest in web technologies. Follow TechExplorer on Twitter for more insights.</p>
+              <p className="text-zinc-600 dark:text-zinc-400">{post.author.bio || 'No bio available'}</p>
             </div>
-          </article>
+          )}
+        </article>
 
           {/* Post Navigation */}
           <div className="mt-8 flex justify-between">
@@ -67,8 +85,8 @@ const SinglePostPage = ({ }) => {
         </section>
 
         {/* Right column */}
-        <section className={`w-full lg:w-1/3 p-4`}>
-          <DiscussionSection />
+        <section className={`w-full lg:w-1/3 lg:p-4`}>
+          <DiscussionSection postSlug={slug} />
 
           {/* Related Posts Section */}
           <div className="mt-8 p-4">
