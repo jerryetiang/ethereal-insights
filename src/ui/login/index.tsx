@@ -2,7 +2,7 @@
 import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
-const LoginPage: React.FC = async () => {
+const LoginPage: React.FC = () => {
     const {data, status} = useSession()
     console.log(data, status)
 

@@ -1,6 +1,6 @@
 import prisma from '@/lib/db';
-import { NextResponse } from 'next/server';
-import { getAuthSession } from '../auth/[...nextauth]/route';
+import { NextRequest, NextResponse } from 'next/server';
+import { getAuthSession } from "../../../lib/authOptions";
 
 // Function to query user schema and return userId based on authorEmail
 const getUserIdFromEmail = async (authorEmail: string) => {
@@ -21,8 +21,8 @@ const getUserIdFromEmail = async (authorEmail: string) => {
   }
 };
 
-// Get all post comments
-export const GET = async (req: { url: string | URL; }) => {
+export const GET = async (req: NextRequest) => {
+  // Your existing code remains the same
   const { searchParams } = new URL(req.url);
   const postSlug = searchParams.get("postSlug");
 
@@ -44,6 +44,7 @@ export const GET = async (req: { url: string | URL; }) => {
     );
   }
 };
+
 
 export const POST = async (req: any) => {
   const session = await getAuthSession();
