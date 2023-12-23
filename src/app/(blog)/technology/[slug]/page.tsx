@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const getData = async (slug: string) => {
-  const res = await fetch(`http://localhost:3000/api/posts/${slug}`);
+  const res = await fetch(`${process.env.BASE_URL}/api/posts/${slug}`);
   if (!res.ok) {
     throw new Error("Failed");
   }
