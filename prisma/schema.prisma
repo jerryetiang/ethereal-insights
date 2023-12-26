@@ -57,7 +57,7 @@ model VerificationToken {
 }
 
 model Post {
-  id         String    @id @default(auto()) @map("_id") @db.ObjectId
+  id         String    @id @default(cuid()) @map("_id") 
   slug       String    @unique
   title      String
   body       String
@@ -67,11 +67,11 @@ model Post {
   comments   Comment[]
   createdAt  DateTime  @default(now())
   Category   Category? @relation(fields: [categoryId], references: [id])
-  categoryId String?   @db.ObjectId
+  categoryId String?
 }
 
 model Comment {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  id        String   @id @default(cuid()) @map("_id") 
   comment   String
   author    User     @relation(fields: [authorId], references: [id])
   authorId  String
@@ -81,14 +81,14 @@ model Comment {
 }
 
 model Category {
-  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  id       String @id @default(cuid()) @map("_id") 
   title    String
   subTitle String
   posts    Post[]
 }
 
 model NavigationBarLink {
-  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  id    String @id @default(cuid()) @map("_id") 
   title String
   url   String
 }
