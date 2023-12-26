@@ -3,6 +3,7 @@ import RelatedPostsComponent from "@/ui/post/relatedPosts";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { Key } from "react";
 
 const getData = async (slug: string) => {
   const res = await fetch(`${process.env.BASE_URL}/api/posts/${slug}`);
@@ -71,10 +72,6 @@ const SinglePostPage = async ({ params }: { params: { slug: string } }) => {
     currentIndex < relatedPosts.length - 1
       ? relatedPosts[currentIndex + 1].slug
       : null;
-
-  console.log("Current Index:", currentIndex);
-  console.log("Previous Post Slug:", previousPostSlug);
-  console.log("Next Post Slug:", nextPostSlug);
 
   return (
     <div className={`mx-auto py-4`}>
@@ -160,8 +157,13 @@ const SinglePostPage = async ({ params }: { params: { slug: string } }) => {
             <h2 className="text-2xl text-zinc-700 dark:text-zinc-300 font-semibold mb-4">
               Related Posts
             </h2>
-            <RelatedPostsComponent />
-            <RelatedPostsComponent />
+            {/* Display at most two related posts */}
+            {relatedPosts.slice(0, 2).map((relatedPost: { slug: any; title?: string; body?: string; image?: string; }) => (
+              <RelatedPostsComponent
+                key={relatedPost.slug}
+                post={relatedPost}
+              />
+            ))}
           </div>
         </section>
       </div>
