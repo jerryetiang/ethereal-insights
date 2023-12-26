@@ -6,7 +6,7 @@ export default function Music() {
     <div>
       <HeroSection
         title="MUSIC"
-        subtitle="Discover the stories behind the rhythmic melodies that transcends boundaries and let the language of music resonate within your soul."
+        subtitle="Discover the stories behind the rhythmic melodies that transcend boundaries and let the language of music resonate within your soul."
       />
     </div>
   );

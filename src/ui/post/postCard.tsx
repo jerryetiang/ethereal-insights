@@ -9,6 +9,24 @@ interface PostCardProps {
   description: string;
 }
 
+const truncateText = (text: string, maxLength: number) => {
+  if (text.length <= maxLength) {
+    return text;
+  }
+  const truncatedText = text.slice(0, maxLength).trim();
+  return `${truncatedText}...`;
+};
+
+const formatPublishDate = (dateString: string) => {
+  const options: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  const date = new Date(dateString);
+  return date.toLocaleDateString(undefined, options);
+};
+
 const PostCard: React.FC<PostCardProps> = ({
   backgroundImage,
   postTitle,
@@ -25,6 +43,9 @@ const PostCard: React.FC<PostCardProps> = ({
   const handleMouseLeave = () => {
     setIsHovered(false);
   };
+
+  const truncatedDescription = truncateText(description, 300);
+  const formattedPublishDate = formatPublishDate(publishDate);
 
   const cardStyle = {
     backgroundImage: `url(${backgroundImage})`,
@@ -48,13 +69,13 @@ const PostCard: React.FC<PostCardProps> = ({
           {postTitle}
         </h2>
         <p className="text-sm font-light dark:text-zinc-300 text-zinc-700">
-          <span className="text-lime-400">Author:</span>{author}
+          <span className="text-lime-400">Author:</span> {author}
         </p>
         <p className="text-sm font-light dark:text-zinc-300 text-zinc-700">
-          <span className="text-lime-400">Published on:</span> {publishDate}
+          <span className="text-lime-400">Published on:</span> {formattedPublishDate}
         </p>
         <p className="text-sm font-regular dark:text-zinc-100 text-zinc-800 mt-4">
-          {description}
+          {truncatedDescription}
         </p>
       </div>
     </div>

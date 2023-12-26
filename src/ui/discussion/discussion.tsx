@@ -23,7 +23,7 @@ const DiscussionSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
   // Fetch comments based on postSlug
   const fetchComments = async () => {
     try {
-      const response = await fetch(`${process.env.BASE_URL}api/comments?postSlug=${postSlug}`);
+      const response = await fetch(`/api/comments?postSlug=${postSlug}`);
       if (response.ok) {
         const comments = await response.json();
         setPostComments(comments);
@@ -48,7 +48,7 @@ const DiscussionSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
   // Function to handle comment submission
   const handleCommentSubmit = async () => {
     try {
-      const response = await fetch(`${process.env.BASE_URL}/api/comments`, {
+      const response = await fetch(`/api/comments`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

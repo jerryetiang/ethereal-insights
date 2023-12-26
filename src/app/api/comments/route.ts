@@ -22,7 +22,6 @@ const getUserIdFromEmail = async (authorEmail: string) => {
 };
 
 export const GET = async (req: NextRequest) => {
-  // Your existing code remains the same
   const { searchParams } = new URL(req.url);
   const postSlug = searchParams.get("postSlug");
 
@@ -48,7 +47,6 @@ export const GET = async (req: NextRequest) => {
 
 export const POST = async (req: any) => {
   const session = await getAuthSession();
-  console.log("session:", session?.user);
 
   if (!session) {
     return new NextResponse(
