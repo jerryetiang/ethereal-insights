@@ -23,7 +23,7 @@ const DiscussionSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
   // Fetch comments based on postSlug
   const fetchComments = async () => {
     try {
-      const response = await fetch(`${process.env.BASE_URL}api/comments?postSlug=${postSlug}`);
+      const response = await fetch(`/api/comments?postSlug=${postSlug}`);
       if (response.ok) {
         const comments = await response.json();
         setPostComments(comments);
