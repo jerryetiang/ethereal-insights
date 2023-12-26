@@ -47,7 +47,6 @@ export const GET = async (req: NextRequest) => {
 
 export const POST = async (req: any) => {
   const session = await getAuthSession();
-  console.log("session:", session?.user);
 
   if (!session) {
     return new NextResponse(
