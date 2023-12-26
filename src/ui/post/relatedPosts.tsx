@@ -25,7 +25,7 @@ const RelatedPostsComponent: React.FC<RelatedPostsComponentProps> = ({
 }) => {
   const truncatedDescription = truncateText(post.body, 64);
   return (
-    <Link href={`/posts/${post.slug}`}>
+    <Link href={`/technology/${post.slug}`}>
       <Card className="max-w-sm bg-zinc-100 dark:bg-zinc-900 border-none my-4 shadow-transparent">
         <div className="flex items-center space-x-4">
           <div className="shrink-0">

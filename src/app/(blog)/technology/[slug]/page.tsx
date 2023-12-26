@@ -158,7 +158,7 @@ const SinglePostPage = async ({ params }: { params: { slug: string } }) => {
               Related Posts
             </h2>
             {/* Display at most two related posts */}
-            {relatedPosts.slice(0, 2).map((relatedPost: { slug: any; title?: string; body?: string; image?: string; }) => (
+            {relatedPosts.slice(0, 2).map((relatedPost: { slug: string; title: string; body: string; image: string; }) => (
               <RelatedPostsComponent
                 key={relatedPost.slug}
                 post={relatedPost}
