@@ -13,6 +13,7 @@ interface PostGridProps {
     body: string;
     slug: string;
   }>;
+  catSlug: string;
 }
 
 const classes = [
@@ -22,12 +23,12 @@ const classes = [
   "col-span-1 sm:col-span-2",
 ];
 
-const PostGrid: React.FC<PostGridProps> = ({ data }) => {
+const PostGrid: React.FC<PostGridProps> = ({ data, catSlug }) => {
   return (
     <div className="grid sm:grid-cols-3 grid-cols-1 grid-flow-auto gap-x-4 gap-y-1">
       {data.map((post, postIndex) => (
         <div key={postIndex} className={classes[postIndex % classes.length]}>
-          <Link href={`/technology/${post.slug}`}>
+          <Link href={`/${catSlug}/${post.slug}`}>
             <PostCard
               backgroundImage={post.image}
               postTitle={post.title}
