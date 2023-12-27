@@ -1,7 +1,8 @@
-'use client'
-import React, { useState, useEffect } from 'react';
-import { Button } from 'flowbite-react';
-import Comment from './comment';
+"use client";
+import React, { useState, useEffect } from "react";
+import { Button } from "flowbite-react";
+import Comment from "./comment";
+import CommentSkeleton from "./commentSkeleton";
 
 interface CommentProps {
   id: string;
@@ -16,8 +17,10 @@ interface CommentProps {
 const DiscussionSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
   // State for managing comments, new comments, and pagination
   const [postComments, setPostComments] = useState<CommentProps[]>([]);
-  const [newComment, setNewComment] = useState('');
+  const [newComment, setNewComment] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [loadingComments, setLoadingComments] = useState(true);
+
   const commentsPerPage = 2;
 
   // Fetch comments based on postSlug
@@ -28,10 +31,12 @@ const DiscussionSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
         const comments = await response.json();
         setPostComments(comments);
       } else {
-        console.error('Error fetching comments:', response.statusText);
+        console.error("Error fetching comments:", response.statusText);
       }
     } catch (error) {
-      console.error('Error fetching comments:', error);
+      console.error("Error fetching comments:", error);
+    } finally {
+      setLoadingComments(false); // Set loading state to false after fetching comments
     }
   };
 
@@ -43,15 +48,18 @@ const DiscussionSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
   // Get current comments based on pagination
   const indexOfLastComment = currentPage * commentsPerPage;
   const indexOfFirstComment = indexOfLastComment - commentsPerPage;
-  const currentComments = postComments.slice(indexOfFirstComment, indexOfLastComment);
+  const currentComments = postComments.slice(
+    indexOfFirstComment,
+    indexOfLastComment
+  );
 
   // Function to handle comment submission
   const handleCommentSubmit = async () => {
     try {
       const response = await fetch(`/api/comments`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           postSlug,
@@ -60,18 +68,18 @@ const DiscussionSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
       });
 
       if (response.ok) {
-        console.log('Comment posted successfully!');
+        console.log("Comment posted successfully!");
         // Fetch and update the comments array
         fetchComments();
         // Reset the form by clearing the newComment state
-        setNewComment('');
+        setNewComment("");
         // Reset to the last page after submitting a new comment
         setCurrentPage(Math.ceil(postComments.length / commentsPerPage));
       } else {
-        console.error('Error posting comment:', response.statusText);
+        console.error("Error posting comment:", response.statusText);
       }
     } catch (error) {
-      console.error('Error posting comment:', error);
+      console.error("Error posting comment:", error);
     }
   };
 
@@ -80,12 +88,11 @@ const DiscussionSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
     setCurrentPage(page);
   };
 
-
   return (
     <section className="antialiased mb-4">
       <div className="max-w-2xl mx-auto px-4">
         <div className="flex justify-between items-center mb-6">
-        <h2 className="text-lg lg:text-2xl font-bold text-zinc-700 dark:text-zinc-300">
+          <h2 className="text-lg lg:text-2xl font-bold text-zinc-700 dark:text-zinc-300">
             Discussion ({postComments.length})
           </h2>
         </div>
@@ -115,31 +122,42 @@ const DiscussionSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
           </Button>
         </form>
 
-       {/* Render comments for the current page */}
-       {currentComments.map((comment) => (
-          <Comment postSlug={postSlug} key={comment.id} {...comment} />
-        ))}
-        {/* Pagination controls */}
-        <div className="flex justify-center gap-4 items-center mt-4">
-          <Button
-            size="xs"
-            color="dark"
-            className="p-2 text-lime-400 bg-zinc-800 enabled:hover:bg-zinc-900 focus:ring-zinc-300 dark:bg-zinc-800 dark:enabled:hover:bg-zinc-700 dark:focus:ring-zinc-800 dark:border-zinc-700 theme-transition"
-            disabled={currentPage === 1}
-            onClick={() => handlePageChange(currentPage - 1)}
-          >
-            Previous
-          </Button>
-          <Button
-            size="xs"
-            color="dark"
-            className="p-2 text-lime-400 bg-zinc-800 enabled:hover:bg-zinc-900 focus:ring-zinc-300 dark:bg-zinc-800 dark:enabled:hover:bg-zinc-700 dark:focus:ring-zinc-800 dark:border-zinc-700 theme-transition"
-            disabled={indexOfLastComment >= postComments.length}
-            onClick={() => handlePageChange(currentPage + 1)}
-          >
-            Next
-          </Button>
-        </div>
+        {/* Render comments or skeleton loader based on loading state */}
+        {loadingComments ? (
+          // Skeleton Loader
+          <div className="skeleton-loader">
+            <CommentSkeleton />
+          </div>
+        ) : (
+          // Actual Comments
+          <>
+            {postComments.slice(0, 2).map((comment) => (
+              <Comment postSlug={postSlug} key={comment.id} {...comment} />
+            ))}
+
+            {/* Pagination controls */}
+            <div className="flex justify-center gap-4 items-center mt-4">
+              <Button
+                size="xs"
+                color="dark"
+                className="w-1/2 text-lime-400 bg-zinc-800 enabled:hover:bg-zinc-900 focus:ring-zinc-300 dark:bg-zinc-800 dark:enabled:hover:bg-zinc-700 dark:focus:ring-zinc-800 dark:border-zinc-700 theme-transition"
+                disabled={currentPage === 1}
+                onClick={() => handlePageChange(currentPage - 1)}
+              >
+                Previous
+              </Button>
+              <Button
+                size="xs"
+                color="dark"
+                className="w-1/2 text-lime-400 bg-zinc-800 enabled:hover:bg-zinc-900 focus:ring-zinc-300 dark:bg-zinc-800 dark:enabled:hover:bg-zinc-700 dark:focus:ring-zinc-800 dark:border-zinc-700 theme-transition"
+                disabled={indexOfLastComment >= postComments.length}
+                onClick={() => handlePageChange(currentPage + 1)}
+              >
+                Next
+              </Button>
+            </div>
+          </>
+        )}
       </div>
     </section>
   );
