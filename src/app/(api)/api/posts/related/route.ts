@@ -7,7 +7,7 @@ export const GET = async (req: NextRequest) => {
   const categoryId = searchParams.get("categoryId");
 
   try {
-    // Fetch relatedPosts with the author object included
+    // Fetch relatedPosts
     const relatedPosts = await prisma.post.findMany({
       where: { ...(categoryId && { categoryId }) },
     });

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 
 interface CommentProps {
@@ -16,7 +17,7 @@ const Comment: React.FC<CommentProps> = ({ author, createdAt, comment, postSlug 
     <footer className="flex justify-between items-center mb-2">
       <div className="flex items-center">
         <p className="inline-flex items-center mr-3 text-sm text-zinc-900 dark:text-white font-semibold">
-          <img className="mr-2 w-6 h-6 rounded-full" src={`https://flowbite.com/docs/images/people/profile-picture-2.jpg`} alt={author.name} />
+          <Image className="mr-2 w-6 h-6 rounded-full" src={`/blog-samples/freelancer.png`} alt={author.name} width={100} height={100} />
           {author.name}
         </p>
         <p className="text-sm text-zinc-600 dark:text-zinc-400">

@@ -11,6 +11,7 @@ interface RelatedPostsComponentProps {
     body: string;
     image: string;
   };
+  category: string;
 }
 
 const truncateText = (text: string, maxLength: number) => {
@@ -21,11 +22,11 @@ const truncateText = (text: string, maxLength: number) => {
 };
 
 const RelatedPostsComponent: React.FC<RelatedPostsComponentProps> = ({
-  post,
+  post, category
 }) => {
   const truncatedDescription = truncateText(post.body, 64);
   return (
-    <Link href={`/technology/${post.slug}`}>
+    <Link href={`/${category}/${post.slug}`}>
       <Card className="max-w-sm bg-zinc-100 dark:bg-zinc-900 border-none my-4 shadow-transparent">
         <div className="flex items-center space-x-4">
           <div className="shrink-0">

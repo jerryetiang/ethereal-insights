@@ -1,6 +1,6 @@
 import prisma from '@/lib/db';
 import { NextRequest, NextResponse } from 'next/server';
-import { getAuthSession } from "../../../lib/authOptions";
+import { getAuthSession } from "@/lib/authOptions";
 
 // Function to query user schema and return userId based on authorEmail
 const getUserIdFromEmail = async (authorEmail: string) => {

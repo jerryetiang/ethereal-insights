@@ -34,17 +34,16 @@ const getRelatedPosts = async (categoryId: string) => {
   }
 };
 
-const SinglePostPage = async ({ params }: { params: { slug: string } }) => {
-  const { slug } = params;
+const SinglePostPage = async ({ params }: { params: { slug: string, category: string } }) => {
+  const { slug, category } = params;
+  
 
   const fetchData = async () => {
     try {
       const data = await getData(slug);
-      // Use the fetched data instead of the static post
       return data;
     } catch (error) {
       console.error("Error fetching data:", error);
-      // Handle error or return a default value
       return null;
     }
   };
@@ -129,7 +128,7 @@ const SinglePostPage = async ({ params }: { params: { slug: string } }) => {
               {previousPostSlug && (
                 <Link
                   className="text-zinc-600 dark:text-zinc-400"
-                  href={`/technology/${previousPostSlug}`}
+                  href={`/${category}/${previousPostSlug}`}
                 >
                   &lt; Previous Post
                 </Link>
@@ -139,7 +138,7 @@ const SinglePostPage = async ({ params }: { params: { slug: string } }) => {
               {nextPostSlug && (
                 <Link
                   className="text-zinc-600 dark:text-zinc-400"
-                  href={`/technology/${nextPostSlug}`}
+                  href={`/${category}/${nextPostSlug}`}
                 >
                   Next Post &gt;
                 </Link>
@@ -162,6 +161,7 @@ const SinglePostPage = async ({ params }: { params: { slug: string } }) => {
               <RelatedPostsComponent
                 key={relatedPost.slug}
                 post={relatedPost}
+                category={category}
               />
             ))}
           </div>
