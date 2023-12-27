@@ -1,9 +1,9 @@
 import prisma from "@/lib/db";
 import { NextResponse } from "next/server";
 
-export const GET = async (req: { query: { category: string } }) => {
+export const GET = async (req: any, { params }: any) => {
   try {
-    const { category } = req.query;
+    const { category } = params.category;
 
     const categoryData = await prisma.category.findMany({
       where: {
