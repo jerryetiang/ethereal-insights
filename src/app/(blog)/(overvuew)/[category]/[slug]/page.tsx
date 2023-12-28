@@ -16,13 +16,15 @@ const getData = async (slug: string) => {
 };
 
 const getRelatedPosts = async (categoryId: string) => {
+
   try {
     // Fetch posts with the same category
     const response = await fetch(
-      `${process.env.BASE_URL}/api/posts/related?category=${categoryId}`
+      `${process.env.BASE_URL}/api/posts/related?categoryId=${categoryId}`
     );
     if (response.ok) {
-      return await response.json();
+      const res = await response.json();
+      return res
     } else {
       console.error("Error fetching related posts:", response.statusText);
       return [];

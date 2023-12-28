@@ -135,27 +135,29 @@ const DiscussionSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
               <Comment postSlug={postSlug} key={comment.id} {...comment} />
             ))}
 
-            {/* Pagination controls */}
-            <div className="flex justify-center gap-4 items-center mt-4">
-              <Button
-                size="xs"
-                color="dark"
-                className="w-1/2 text-lime-400 bg-zinc-800 enabled:hover:bg-zinc-900 focus:ring-zinc-300 dark:bg-zinc-800 dark:enabled:hover:bg-zinc-700 dark:focus:ring-zinc-800 dark:border-zinc-700 theme-transition"
-                disabled={currentPage === 1}
-                onClick={() => handlePageChange(currentPage - 1)}
-              >
-                Previous
-              </Button>
-              <Button
-                size="xs"
-                color="dark"
-                className="w-1/2 text-lime-400 bg-zinc-800 enabled:hover:bg-zinc-900 focus:ring-zinc-300 dark:bg-zinc-800 dark:enabled:hover:bg-zinc-700 dark:focus:ring-zinc-800 dark:border-zinc-700 theme-transition"
-                disabled={indexOfLastComment >= postComments.length}
-                onClick={() => handlePageChange(currentPage + 1)}
-              >
-                Next
-              </Button>
-            </div>
+             {/* Pagination controls (conditionally rendered) */}
+             {postComments.length > 2 && (
+              <div className="flex justify-center gap-4 items-center mt-4">
+                <Button
+                  size="xs"
+                  color="dark"
+                  className="w-1/2 text-lime-400 bg-zinc-800 enabled:hover:bg-zinc-900 focus:ring-zinc-300 dark:bg-zinc-800 dark:enabled:hover:bg-zinc-700 dark:focus:ring-zinc-800 dark:border-zinc-700 theme-transition"
+                  disabled={currentPage === 1}
+                  onClick={() => handlePageChange(currentPage - 1)}
+                >
+                  Previous
+                </Button>
+                <Button
+                  size="xs"
+                  color="dark"
+                  className="w-1/2 text-lime-400 bg-zinc-800 enabled:hover:bg-zinc-900 focus:ring-zinc-300 dark:bg-zinc-800 dark:enabled:hover:bg-zinc-700 dark:focus:ring-zinc-800 dark:border-zinc-700 theme-transition"
+                  disabled={indexOfLastComment >= postComments.length}
+                  onClick={() => handlePageChange(currentPage + 1)}
+                >
+                  Next
+                </Button>
+              </div>
+            )}
           </>
         )}
       </div>
