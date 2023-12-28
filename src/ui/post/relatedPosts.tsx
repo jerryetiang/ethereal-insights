@@ -22,7 +22,8 @@ const truncateText = (text: string, maxLength: number) => {
 };
 
 const RelatedPostsComponent: React.FC<RelatedPostsComponentProps> = ({
-  post, category
+  post,
+  category,
 }) => {
   const truncatedDescription = truncateText(post.body, 64);
   return (
