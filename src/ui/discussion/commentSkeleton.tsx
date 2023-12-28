@@ -5,11 +5,12 @@ const CommentSkeleton: React.FC = () => (
     <footer className="flex justify-between items-center mb-2">
       <div className="flex items-center">
         {/* User Avatar Skeleton */}
-        <div className="skeleton-avatar mr-3"></div>
+        <div className="skeleton-avatar mr-3 "></div>
         {/* User Name and Comment Date Skeleton */}
         <div className="skeleton-info">
-          <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-20 mb-1"></div>
-          <div className="h-3 bg-gray-300 dark:bg-gray-700 rounded w-12"></div>
+          <div className="h-4 bg-zinc-300 dark:bg-zinc-700 rounded w-36 mb-1"></div>
+          <div className="h-3 bg-zinc-300 dark:bg-zinc-700 rounded w-24 mb-2"></div>
+          <div className="h-3 bg-zinc-300 dark:bg-zinc-700 rounded w-12"></div>
         </div>
       </div>
       {/* Comment Settings Skeleton */}
