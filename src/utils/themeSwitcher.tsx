@@ -1,6 +1,6 @@
-'use client'
-import React from 'react';
-import { useTheme } from 'next-themes';
+"use client";
+import React from "react";
+import { useTheme } from "next-themes";
 
 interface ThemeSwitcherProps {
   onThemeChange: (isDark: boolean) => void;
@@ -10,19 +10,19 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ onThemeChange }) => {
   const { systemTheme, theme, setTheme } = useTheme();
 
   const renderThemeChanger = () => {
-    const currentTheme = theme === 'system' ? systemTheme : theme;
+    const currentTheme = theme === "system" ? systemTheme : theme;
 
     const buttonClass = `w-6 h-6 ${
-      currentTheme === 'dark' ? 'text-yellow-400' : 'text-lime-400'
-    } ${currentTheme === 'dark' ? 'dark-transition' : ''}`;
+      currentTheme === "dark" ? "text-yellow-400" : "text-lime-400"
+    } ${currentTheme === "dark" ? "dark-transition" : ""}`;
 
     const handleThemeToggle = (e: { preventDefault: () => void }) => {
       e.preventDefault();
-    
-      const isDark: boolean = currentTheme === 'dark';
-    
+
+      const isDark: boolean = currentTheme === "dark";
+
       onThemeChange(!isDark);
-      setTheme(isDark ? 'light' : 'dark');
+      setTheme(isDark ? "light" : "dark");
     };
 
     return (
@@ -30,9 +30,9 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ onThemeChange }) => {
         className={buttonClass}
         role="button"
         onClick={handleThemeToggle}
-        title={currentTheme === 'dark' ? 'Light' : 'Dark'}
+        title={currentTheme === "dark" ? "Light" : "Dark"}
       >
-        {currentTheme === 'dark' ? (
+        {currentTheme === "dark" ? (
           <svg
             fill="currentColor"
             viewBox="0 0 20 20"

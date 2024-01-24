@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const MediaLibrary = () => {
-  return (
-    <div>MediaLibrary</div>
-  )
-}
+  return <div>MediaLibrary</div>;
+};
 
-export default MediaLibrary
+export default MediaLibrary;

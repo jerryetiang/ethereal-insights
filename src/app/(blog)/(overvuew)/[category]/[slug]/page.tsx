@@ -11,34 +11,34 @@ const getData = async (slug: string) => {
     throw new Error("Failed");
   }
 
-  // Return the parsed JSON data
   return await res.json();
 };
 
 const getRelatedPosts = async (categoryId: string) => {
-
   try {
-    // Fetch posts with the same category
     const response = await fetch(
       `${process.env.BASE_URL}/api/posts/related?categoryId=${categoryId}`
     );
     if (response.ok) {
       const res = await response.json();
-      return res
+      return res;
     } else {
       console.error("Error fetching related posts:", response.statusText);
       return [];
     }
   } catch (error) {
     console.error("Error fetching related posts:", error);
-    // Handle error or return a default value
+
     return [];
   }
 };
 
-const SinglePostPage = async ({ params }: { params: { slug: string, category: string } }) => {
+const SinglePostPage = async ({
+  params,
+}: {
+  params: { slug: string; category: string };
+}) => {
   const { slug, category } = params;
-  
 
   const fetchData = async () => {
     try {
@@ -58,15 +58,12 @@ const SinglePostPage = async ({ params }: { params: { slug: string, category: st
 
   const post = data;
 
-  // Fetch related posts based on the category
   const relatedPosts = await getRelatedPosts(post.categoryId || "");
 
-  // Find the index of the current post in the related posts array
   const currentIndex = relatedPosts.findIndex(
     (p: { slug: string }) => p.slug === slug
   );
 
-  // Get the previous and next post slugs
   const previousPostSlug =
     currentIndex > 0 ? relatedPosts[currentIndex - 1].slug : null;
   const nextPostSlug =
@@ -159,13 +156,22 @@ const SinglePostPage = async ({ params }: { params: { slug: string, category: st
               Related Posts
             </h2>
             {/* Display at most two related posts */}
-            {relatedPosts.slice(0, 2).map((relatedPost: { slug: string; title: string; body: string; image: string; }) => (
-              <RelatedPostsComponent
-                key={relatedPost.slug}
-                post={relatedPost}
-                category={category}
-              />
-            ))}
+            {relatedPosts
+              .slice(0, 2)
+              .map(
+                (relatedPost: {
+                  slug: string;
+                  title: string;
+                  body: string;
+                  image: string;
+                }) => (
+                  <RelatedPostsComponent
+                    key={relatedPost.slug}
+                    post={relatedPost}
+                    category={category}
+                  />
+                )
+              )}
           </div>
         </section>
       </div>

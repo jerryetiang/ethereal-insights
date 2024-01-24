@@ -23,14 +23,13 @@ const PurchaseModal = () => {
       ease: "power2.inOut",
       onComplete: () => {
         setOpenModal(false);
-        // Reset form fields on modal close
+
         setName("");
         setEmail("");
         setPhone("");
       },
     });
 
-    // Fade out animation for the backdrop
     gsap.to(backdropRef.current, {
       opacity: 0,
       duration: 0.5,
@@ -39,10 +38,8 @@ const PurchaseModal = () => {
   }, [modalRef, setOpenModal, setName, setEmail, setPhone]);
 
   const handlePurchase = () => {
-    // Add your purchase logic here
-    // For example, send form data to the server
     console.log("Purchase submitted:", { name, email, phone });
-    // Close the modal after handling the purchase
+
     closePurchaseModal();
   };
 
@@ -61,7 +58,6 @@ const PurchaseModal = () => {
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
 
-    // Initial slide-in animation
     if (openModal) {
       gsap.fromTo(
         modalRef.current,
@@ -70,7 +66,6 @@ const PurchaseModal = () => {
       );
     }
 
-    // Initial fade-in animation
     if (openModal) {
       gsap.fromTo(
         backdropRef.current,

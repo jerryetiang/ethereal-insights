@@ -24,18 +24,16 @@ export default function Hero() {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   useEffect(() => {
-    // Animate the woman meditating with GSAP
     const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
 
-    // // Fade in loader
     tl.to(loaderRef.current, { opacity: 1, duration: 0.5 });
-    tl.to(loaderRef.current, { opacity: 0, duration: 1 }, "+=0.5"); // Fade out loader 0.5s after it fades in
+    tl.to(loaderRef.current, { opacity: 0, duration: 1 }, "+=0.5");
 
     tl.fromTo(
       meditatingWomanRef.current,
       { scale: 0, opacity: 0 },
       { scale: 1, opacity: 1, duration: 2 },
-      "+=0.5" // Start the woman meditating animation 1 second before the text animation ends
+      "+=0.5"
     );
 
     tl.fromTo(
@@ -50,14 +48,11 @@ export default function Hero() {
       ],
       { opacity: 0, scale: 0, y: "+=20" },
       { opacity: 1, scale: 1, y: 0, stagger: 0.2, duration: 1 },
-      "-=1.5" // Start the text animation 0.1s before the loader fades out
+      "-=1.5"
     );
 
-    // Optional: Add more animations to tl as needed
-
-    // You can adjust the options and add more animations as needed
     tl.to(meditatingWomanRef.current, {
-      scale: .95,
+      scale: 0.95,
       duration: 3,
       yoyo: true,
       repeat: -1,
@@ -68,12 +63,11 @@ export default function Hero() {
     });
 
     return () => {
-      tl.kill(); // Kill the animation on unmount
+      tl.kill();
     };
   }, []);
 
   useEffect(() => {
-    // Set the initial theme when the component mounts
     setIsDarkTheme(
       theme === "dark" || (theme === "system" && systemTheme === "dark")
     );
@@ -101,7 +95,10 @@ export default function Hero() {
       <div className="z-10 grid grid-cols-1 md:grid-cols-2 gap-10 relative scale-90">
         {/* Text Column */}
         <div className="relative" ref={textColumnRef}>
-          <p ref={leadingRef} className="opacity-0 scale-0 flex text-lg text-center sm:text-left  uppercase text-lime-400">
+          <p
+            ref={leadingRef}
+            className="opacity-0 scale-0 flex text-lg text-center sm:text-left  uppercase text-lime-400"
+          >
             The Mystery of
           </p>
           <h2
@@ -178,7 +175,6 @@ export default function Hero() {
             height={600}
           />
         </div>
-        
       </div>
     </div>
   );

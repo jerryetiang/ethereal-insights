@@ -8,14 +8,15 @@ interface HeroSectionProps {
 
 const colorizeText = (text: string, subtitle: string) => {
   if (text.length < 3) {
-    return { title: text, subtitle }; // No modifications for short texts
+    return { title: text, subtitle };
   }
 
   // Color the third last letter of the title
   const titleArray = text.split("");
-  titleArray[titleArray.length - 3] = `<span class="text-lime-400">${titleArray[titleArray.length - 3]}</span>`;
+  titleArray[titleArray.length - 3] = `<span class="text-lime-400">${
+    titleArray[titleArray.length - 3]
+  }</span>`;
 
-  // Color the second and third word of the subtitle
   const subtitleArray = subtitle.split(" ");
   if (subtitleArray.length >= 3) {
     subtitleArray[1] = `<span class="text-lime-400">${subtitleArray[1]}</span>`;
@@ -29,7 +30,10 @@ const colorizeText = (text: string, subtitle: string) => {
 };
 
 const HeroSection: React.FC<HeroSectionProps> = ({ title, subtitle }) => {
-  const { title: coloredTitle, subtitle: coloredSubtitle } = colorizeText(title, subtitle);
+  const { title: coloredTitle, subtitle: coloredSubtitle } = colorizeText(
+    title,
+    subtitle
+  );
 
   return (
     <section className="z-10 sm:py-16">

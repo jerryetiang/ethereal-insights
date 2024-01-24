@@ -5,29 +5,27 @@ import prisma from "@/lib/db";
 import { JWT } from "next-auth/jwt";
 
 interface CallbackParams {
-    token: JWT;
-    user?: User;
+  token: JWT;
+  user?: User;
 }
 
 export const authOptions = {
-    adapter: PrismaAdapter(prisma),
-    // Configure one or more authentication providers
-    providers: [
-        GithubProvider({
-            clientId: process.env.GITHUB_ID || '',
-            clientSecret: process.env.GITHUB_SECRET || '',
-        }),
-        // ...add more providers here
-    ],
-    callbacks: {
-        async jwt({ token, user }: CallbackParams) {
-            // Include the user ID in the token
-            if (user) {
-                token.id = user.id;
-            }
-            return token;
-        },
+  adapter: PrismaAdapter(prisma),
+
+  providers: [
+    GithubProvider({
+      clientId: process.env.GITHUB_ID || "",
+      clientSecret: process.env.GITHUB_SECRET || "",
+    }),
+  ],
+  callbacks: {
+    async jwt({ token, user }: CallbackParams) {
+      if (user) {
+        token.id = user.id;
+      }
+      return token;
     },
+  },
 };
 
 export const getAuthSession = () => getServerSession(authOptions);

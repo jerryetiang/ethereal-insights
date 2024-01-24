@@ -1,6 +1,5 @@
 import InsightCard from "@/ui/journal/insightCard";
 import React from "react";
-
 interface InsightSectionProps {
   insights: { title: string; description: string; icon: JSX.Element }[];
 }

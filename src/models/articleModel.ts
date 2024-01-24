@@ -1,4 +1,4 @@
-import mongoose, { Document, Schema } from 'mongoose';
+import mongoose, { Document, Schema } from "mongoose";
 
 interface Comment {
   text: string;
@@ -28,7 +28,7 @@ interface ArticleDocument extends Document {
   likes: number;
   featuredImage: string;
   views: number;
-  status: 'draft' | 'published';
+  status: "draft" | "published";
   createdAt: Date;
   updatedAt: Date;
   meta: {
@@ -56,11 +56,13 @@ const articleSchema = new Schema<ArticleDocument>({
     type: [String],
     default: [],
   },
-  comments: [{
-    text: String,
-    author: String,
-    createdAt: { type: Date, default: Date.now },
-  }],
+  comments: [
+    {
+      text: String,
+      author: String,
+      createdAt: { type: Date, default: Date.now },
+    },
+  ],
   categories: [String],
   likes: {
     type: Number,
@@ -73,8 +75,8 @@ const articleSchema = new Schema<ArticleDocument>({
   },
   status: {
     type: String,
-    enum: ['draft', 'published'],
-    default: 'draft',
+    enum: ["draft", "published"],
+    default: "draft",
   },
   createdAt: {
     type: Date,
@@ -100,6 +102,6 @@ const articleSchema = new Schema<ArticleDocument>({
   },
 });
 
-const ArticleModel = mongoose.model<ArticleDocument>('Article', articleSchema);
+const ArticleModel = mongoose.model<ArticleDocument>("Article", articleSchema);
 
 export default ArticleModel;

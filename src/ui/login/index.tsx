@@ -1,23 +1,23 @@
-"use client"
-import { signIn, useSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
+"use client";
+import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const LoginPage: React.FC = () => {
-    const {data, status} = useSession()
-    console.log(data, status)
+  const { data, status } = useSession();
+  console.log(data, status);
 
-    const router = useRouter()
+  const router = useRouter();
 
-    if(status === "loading") {
-        return <div>Loading...</div>
-    }
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
 
-    if(status === "authenticated") {
-        router.push("/dashboard")
-    }
+  if (status === "authenticated") {
+    router.push("/dashboard");
+  }
 
   const handleLogin = async () => {
-    await signIn('github'); 
+    await signIn("github");
   };
 
   return (

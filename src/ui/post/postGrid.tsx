@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState } from "react";
 import PostCard from "./postCard";
 import Link from "next/link";
@@ -8,7 +7,7 @@ interface PostGridProps {
   data: Array<{
     image: string;
     title: string;
-    author: {name: string};
+    author: { name: string };
     createdAt: string;
     body: string;
     slug: string;

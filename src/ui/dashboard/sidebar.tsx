@@ -1,6 +1,6 @@
-import React from 'react';
-import { ProfileCard } from './profileCard';
-import { Navigation } from './navigation/navigation';
+import React from "react";
+import { ProfileCard } from "./profileCard";
+import { Navigation } from "./navigation/navigation";
 
 const Sidebar = () => {
   return (

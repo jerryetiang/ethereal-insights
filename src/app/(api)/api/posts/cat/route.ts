@@ -17,12 +17,9 @@ export const GET = async (req: any, { params }: any) => {
       });
     }
 
-    // Fetch posts based on the category ID
     const posts = await prisma.post.findMany({
       where: {
-        categoryId: {
-          // equals: categoryData.id,
-        },
+        categoryId: {},
       },
       include: {
         author: true,

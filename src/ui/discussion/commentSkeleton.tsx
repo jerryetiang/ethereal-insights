@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const CommentSkeleton: React.FC = () => (
   <article className="p-6 text-base bg-zinc-100 rounded-lg dark:bg-zinc-900 mb-4">
