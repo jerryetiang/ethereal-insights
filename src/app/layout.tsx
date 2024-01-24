@@ -5,6 +5,7 @@ import "animate.css";
 import CustomThemeProvider from "@/providers/customThemeProvider";
 import NavigationBar from "@/ui/navbar";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import FooterSection from "@/ui/footer";
 import Background from "@/ui/background";
 import AuthProvider from "@/providers/authProvider";
