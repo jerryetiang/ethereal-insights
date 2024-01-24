@@ -1,5 +1,5 @@
-import React from 'react'
-import { Item } from './item';
+import React from "react";
+import { Item } from "./item";
 
 const navLinks = [
   { id: 1, title: "Overview", url: "/dashboard/overview" },
@@ -9,7 +9,6 @@ const navLinks = [
   { id: 5, title: "Media Library", url: "/dashboard/media-llbrary" },
 ];
 
-
 export const Navigation = () => {
   return (
     <div>
@@ -17,5 +16,5 @@ export const Navigation = () => {
         <Item key={link.id} data={link} />
       ))}
     </div>
-  )
-}
+  );
+};

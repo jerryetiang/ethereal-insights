@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 
@@ -9,22 +9,25 @@ interface CircleDecorationProps {
   position?: { top: string; left: string };
 }
 
-const CircleDecoration: React.FC<CircleDecorationProps> = ({ color, rotation, size, position }) => {
+const CircleDecoration: React.FC<CircleDecorationProps> = ({
+  color,
+  rotation,
+  size,
+  position,
+}) => {
   const shapeRef = useRef(null);
 
   useEffect(() => {
-    // Generate random direction and speed
-    const direction = Math.random() > 0.5 ? 1 : -1; // 1 for right, -1 for left
-    const speed = Math.random() * 10 + 5; // Random speed between 5 and 15
+    const direction = Math.random() > 0.5 ? 1 : -1;
+    const speed = Math.random() * 10 + 5;
 
-    // Animate the shape using GSAP
     const tl = gsap.timeline({ repeat: -1, yoyo: true });
     tl.to(shapeRef.current, { x: `+=${direction * speed}`, duration: 2 });
 
     return () => {
-      tl.kill(); // Kill the animation on unmount
+      tl.kill();
     };
-  }, [shapeRef]); // Run only on mount and unmount
+  }, [shapeRef]);
 
   const getRandomPosition = () => {
     return {

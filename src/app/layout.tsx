@@ -5,6 +5,7 @@ import "animate.css";
 import CustomThemeProvider from "@/providers/customThemeProvider";
 import NavigationBar from "@/ui/navbar";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import FooterSection from "@/ui/footer";
 import Background from "@/ui/background";
 import AuthProvider from "@/providers/authProvider";
@@ -32,7 +33,9 @@ export default function RootLayout({
         <AuthProvider>
           <CustomThemeProvider>
             <NavigationBar />
-            <main className="mt-20 px-4 sm:px-8 md:px-16 lg:px-24 min-h-screen">{children}</main>
+            <main className="mt-20 px-4 sm:px-8 md:px-16 lg:px-24 min-h-screen">
+              {children}
+            </main>
             <Analytics />
             <section id="footer">
               <FooterSection />

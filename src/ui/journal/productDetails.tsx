@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import PurchaseButton from "@/ui/journal/purchaseButton";
-
 interface ProductDetailsProps {
   imageUrl: string;
   altText: string;
@@ -36,7 +35,6 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({
         {/* Rating */}
         <div className="flex justify-center items-center mt-2.5 mb-5">
           <div className="flex items-center space-x-1 rtl:space-x-reverse">
-
             <svg
               className="w-4 h-4 text-yellow-300"
               aria-hidden="true"
@@ -88,7 +86,9 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({
           </span>
         </div>
 
-        <p className="text-3xl mt-2 mb-2 font-bold text-zinc-900 dark:text-zinc-100">Price: {price}</p>
+        <p className="text-3xl mt-2 mb-2 font-bold text-zinc-900 dark:text-zinc-100">
+          Price: {price}
+        </p>
 
         {/* Purchase Button */}
         <PurchaseButton />

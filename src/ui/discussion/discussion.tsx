@@ -135,8 +135,8 @@ const DiscussionSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
               <Comment postSlug={postSlug} key={comment.id} {...comment} />
             ))}
 
-             {/* Pagination controls (conditionally rendered) */}
-             {postComments.length > 2 && (
+            {/* Pagination controls (conditionally rendered) */}
+            {postComments.length > 2 && (
               <div className="flex justify-center gap-4 items-center mt-4">
                 <Button
                   size="xs"

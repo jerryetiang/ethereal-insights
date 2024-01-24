@@ -1,5 +1,4 @@
 import React from "react";
-
 interface ProductDescriptionProps {
   title: string;
   mainText: string;
@@ -13,7 +12,9 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({
 }) => {
   return (
     <div>
-      <h2 className="text-4xl font-semibold mb-4 text-zinc-700 dark:text-zinc-200 theme-transition">{title}</h2>
+      <h2 className="text-4xl font-semibold mb-4 text-zinc-700 dark:text-zinc-200 theme-transition">
+        {title}
+      </h2>
       <p className="text-zinc-600 font-medium dark:text-zinc-300 text-md mt-4 theme-transition">
         {mainText}
       </p>

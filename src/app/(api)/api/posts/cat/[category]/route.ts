@@ -32,7 +32,7 @@ export const GET = async (req: any, { params }: any) => {
       category: {
         title: category.title,
         subtitle: category.subTitle,
-        slug: category.slug
+        slug: category.slug,
       },
       posts,
     };

@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const PostManagement = () => {
-    return (
-        <div>PostManagement</div>
-    )
-}
+  return <div>PostManagement</div>;
+};
 
-export default PostManagement
+export default PostManagement;

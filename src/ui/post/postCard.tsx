@@ -60,7 +60,9 @@ const PostCard: React.FC<PostCardProps> = ({
       onMouseLeave={handleMouseLeave}
     >
       <div
-        className={`absolute inset-0 transition-all duration-300 bg-zinc-100 dark:bg-zinc-900 ${isHovered && 'blur-sm scale-125'}`}
+        className={`absolute inset-0 transition-all duration-300 bg-zinc-100 dark:bg-zinc-900 ${
+          isHovered && "blur-sm scale-125"
+        }`}
         style={cardStyle}
       ></div>
 
@@ -72,7 +74,8 @@ const PostCard: React.FC<PostCardProps> = ({
           <span className="text-lime-400">Author:</span> {author}
         </p>
         <p className="text-sm font-light dark:text-zinc-300 text-zinc-700">
-          <span className="text-lime-400">Published on:</span> {formattedPublishDate}
+          <span className="text-lime-400">Published on:</span>{" "}
+          {formattedPublishDate}
         </p>
         <p className="text-sm font-regular dark:text-zinc-100 text-zinc-800 mt-4">
           {truncatedDescription}
